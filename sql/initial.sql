@@ -1,0 +1,9 @@
+DROP DATABASE IF EXISTS orlify;
+CREATE DATABASE orlify;
+USE orlify;
+
+CREATE TABLE images (
+    id INT NOT NULL AUTO_INCREMENT,
+    url VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
