@@ -7,3 +7,61 @@ CREATE TABLE images (
     url VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
+CREATE TABLE users (
+    id INT AUTO_INCREMENT,
+    roleId VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    surnames VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    cardUrl VARCHAR(255) NOT NULL,
+    avatarImageId INT NOT NULL,
+    UNIQUE KEY(email),
+    PRIMARY KEY (id),
+    FOREIGN KEY (roleId) REFERENCES roleS(id),
+    FOREIGN KEY (avatarImageId) REFERENCES images(id),
+
+);
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+insert into roles(name) values ("student");
+insert into roles(name) values ("teacher");
+insert into roles(name) values ("manager");
+insert into roles(name) values ("admin");
+
+CREATE TABLE groups (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE portraits (
+    id INT NOT NULL AUTO_INCREMENT,
+    groupId INT NOT NULL,
+    activated TINYINT(1) NOT NULL DEFAULT 1,
+    public TINYINT(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (id)
+    FOREIGN KEY (groupId) REFERENCES groups(id)
+);
+
+CREATE TABLE portraitsUsersImages (
+    userId INT NOT NULL,
+    imageId INT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (imageId) REFERENCES images(id)
+);
+CREATE TABLE teachersUsersGroups(
+    userId INT NOT NULL,
+    groupId INT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (groupId) REFERENCES groups(id)
+);
+CREATE TABLE studentsUsersGroups(
+    userId INT NOT NULL,
+    groupId INT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (groupId) REFERENCES groups(id)
+);
