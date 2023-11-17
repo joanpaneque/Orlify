@@ -2,6 +2,17 @@ DROP DATABASE IF EXISTS orlify;
 CREATE DATABASE orlify;
 USE orlify;
 
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO roles(name) VALUES ("student");
+INSERT INTO roles(name) VALUES ("teacher");
+INSERT INTO roles(name) VALUES ("manager");
+INSERT INTO roles(name) VALUES ("admin");
+
 CREATE TABLE images (
     id INT NOT NULL AUTO_INCREMENT,
     url VARCHAR(255) NOT NULL,
@@ -10,28 +21,17 @@ CREATE TABLE images (
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT,
-    roleId VARCHAR(255) NOT NULL,
+    roleId INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     surnames VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     cardUrl VARCHAR(255) NOT NULL,
     avatarImageId INT NOT NULL,
-    UNIQUE KEY(email),
-    PRIMARY KEY (id),
-    FOREIGN KEY (roleId) REFERENCES roleS(id),
+    FOREIGN KEY (roleId) REFERENCES roles(id),
     FOREIGN KEY (avatarImageId) REFERENCES images(id),
-
-);
-CREATE TABLE roles (
-    id INT AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
-insert into roles(name) values ("student");
-insert into roles(name) values ("teacher");
-insert into roles(name) values ("manager");
-insert into roles(name) values ("admin");
 
 CREATE TABLE groups (
     id INT NOT NULL AUTO_INCREMENT,
@@ -54,12 +54,14 @@ CREATE TABLE portraitsUsersImages (
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (imageId) REFERENCES images(id)
 );
+
 CREATE TABLE teachersUsersGroups(
     userId INT NOT NULL,
     groupId INT NOT NULL,
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (groupId) REFERENCES groups(id)
 );
+
 CREATE TABLE studentsUsersGroups(
     userId INT NOT NULL,
     groupId INT NOT NULL,
