@@ -7,6 +7,7 @@ CREATE TABLE images (
     url VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT,
     roleId VARCHAR(255) NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE portraits (
     groupId INT NOT NULL,
     activated TINYINT(1) NOT NULL DEFAULT 1,
     public TINYINT(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
     FOREIGN KEY (groupId) REFERENCES groups(id)
 );
 
