@@ -33,6 +33,14 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE reports (
+    id INT AUTO_INCREMENT,
+    userId INT NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (userId) REFERENCES users(id)
+);
+
 CREATE TABLE groups (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
