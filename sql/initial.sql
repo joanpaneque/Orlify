@@ -34,6 +34,16 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE recoveries (
+    id INT AUTO_INCREMENT,
+    userId INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expiresAt DATETIME NOT NULL DEFAULT DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 10 MINUTE),
+    PRIMARY KEY (id),
+    FOREIGN KEY (userId) REFERENCES users(id),
+    UNIQUE (token)
+);
+
 CREATE TABLE reports (
     id INT AUTO_INCREMENT,
     userId INT NOT NULL,

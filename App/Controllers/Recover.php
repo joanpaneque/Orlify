@@ -10,7 +10,6 @@ class Recover {
         return $response;
     }    
 
-
     public function sendMail($request,$response,$container){ // composer require phpmailer/phpmailer
 
         $email = $request->get(INPUT_POST, "email");
@@ -52,5 +51,34 @@ class Recover {
                     echo "Error al enviar el correo de prueba: " . $mail->ErrorInfo;
                 }
         }
+    }
+
+    public function newPassword($request, $response, $container) {
+        $recoveryToken = $request->get(INPUT_GET, "recoveryToken");
+
+        $recoveries = $container->get("\App\Models\Recoveries");
+        $passwords = $container->get("\App\Helpers\Passwords");
+        $users = $container->get("\App\Models\Users");
+
+        $response->setTemplate("newPassword.php");
+
+        if (!$recoveries->valid($recoveryToken)) {
+            $response->set("error", 1);
+            $response->set("message", "El token de recuperació no existeix o ha caducat. Si us plau, torna a sol·licitar la recuperació de la contrasenya.");
+            return $response;
+        }
+
+        $userId = $recoveries->getUser($recoveryToken);
+
+        $plainGeneratedPassword = $passwords->generate();
+        $hashedGeneratedPassword = $passwords->hash($plainGeneratedPassword);
+
+        $users->updatePassword($userId, $hashedGeneratedPassword);
+
+        $response->set("error", 0);
+        $response->set("message", "S'ha generat una nova contrasenya correctament.");
+        $response->set("email", $users->get($userId)->email);
+        $response->set("password", $plainGeneratedPassword);
+        return $response;
     }
 }
