@@ -16,6 +16,10 @@ class Container extends EmesetContainer {
             return new \App\Models\Groups($container["\App\Models\Database"]->getConnection());
         };
 
+        $this["\App\Models\Users"] = function($container) {
+            return new \App\Models\Users($container["\App\Models\Database"]->getConnection());
+        };
+
         $this["\App\Models\Database"] = function($container) {
             return new \App\Models\Database(
                 $container["config"]["database"]["user"],
