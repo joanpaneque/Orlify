@@ -615,6 +615,11 @@ video {
 
 :root {
     --primary: #EF233C;
+    --background: #EDF2F4;
+}
+
+body {
+    background: var(--background);
 }
 
 .titleBottomBar {
