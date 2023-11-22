@@ -2,9 +2,9 @@
 
 return [
     "database" => [
-        "user" => "root",
-        "password" => "1234",
-        "database" => "orlify",
-        "host" => "localhost"
+        "user" => Emeset\Env::get("DATABASE_USER", "YOUR_USER"),
+        "password" => Emeset\Env::get("DATABASE_PASSWORD", "YOUR_PASSWORD"),
+        "database" => Emeset\Env::get("DATABASE_DATABASE", "YOUR_DATABASE"),
+        "host" => Emeset\Env::get("DATABASE_HOST", "YOUR_HOST")
     ]
 ];
