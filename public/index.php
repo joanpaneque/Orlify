@@ -13,8 +13,12 @@ $container = new \App\Container(__DIR__ . "/../App/config.php");
 $app = new \Emeset\Emeset($container);
 
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
+
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
+$app->get("/recover", [Recover::class, "index"]);
+
 $app->post("/logout", [Logout::class, "logout"]);
+
 $app->get("/testing", [Testing::class, "index"]);
 
 $app->get(Router::DEFAULT_ROUTE, function ($request, $response) {

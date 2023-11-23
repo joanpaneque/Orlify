@@ -3,10 +3,9 @@
 namespace App\Controllers;
 
 class Recover {
+    
     public function index($request, $response, $container){ 
-        
-        $response->SetTemplate("recover.php");
-
+        $response->setTemplate("recover.php");
         return $response;
     }    
 
