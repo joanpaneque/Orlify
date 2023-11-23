@@ -7,5 +7,6 @@
 </head>
 <body>
     This is the testing view
+    <a href="<?= $recoverUrl ?>">Recover</a>
 </body>
 </html>

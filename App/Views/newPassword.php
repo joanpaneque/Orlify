@@ -17,10 +17,10 @@
                 <?php } ?>
             </h1>
             <div class="titleBottomBar"></div>
-            <p class="text-gray-700 grayMessage"><?= $message ?></p>
+            <p class="text-gray-700 grayMessage"><?=$message?></p>
             <?php if (!$error) { ?>
-                <p class="text-gray-700">Correu: <?= $email ?></p>
-                <p class="text-gray-700">Contrasenya: <?= $password ?></p> 
+                <p class="text-gray-700">Correu: <strong><?=$email?></strong></p>
+                <p class="text-gray-700">Contrasenya: <strong><?=$password?></strong></p> 
             <?php } ?>
             <a href="/login" class="roundedRedButton">Iniciar sessió</a>
         </div>

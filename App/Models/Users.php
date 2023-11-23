@@ -27,4 +27,13 @@
             ]);
             return $query->fetch();
         }
+
+        public function getFromEmail($email) {
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":email" => $email
+            ]);
+            return $query->fetch()["id"];
+        }
     }

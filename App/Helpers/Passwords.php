@@ -25,28 +25,42 @@ class Passwords {
     }
 
     public function generate() {
-        $password = "";
-        $length = rand($this->minLength, $this->maxLength);
-        $letters = "abcdefghijklmnopqrstuvwxyz";
-        $numbers = "0123456789";
-        $uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $lowercase = "abcdefghijklmnopqrstuvwxyz";
-        $symbols = str_split($this->symbols);
+        $letters = 'abcdefghijklmnopqrstuvwxyz';
+        $numbers = '0123456789';
+        $upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+        $symbolsArray = str_split($this->symbols);
     
-        $password .= substr(str_shuffle($letters), 0, $this->minLetters);
-        $password .= substr(str_shuffle($numbers), 0, $this->minNumbers);
-        $password .= substr(str_shuffle($symbols), 0, $this->minSymbols);
-        $password .= substr(str_shuffle($uppercase), 0, $this->minUppercase);
-        $password .= substr(str_shuffle($lowercase), 0, $this->minLowercase);
+        $selectedLetters = $selectedNumbers = $selectedSymbols = $selectedUpperCase = $selectedLowerCase = '';
     
-        $password = str_shuffle($password);
-    
-        if (strlen($password) < $length) {
-            $password .= substr(str_shuffle($letters), 0, $length - strlen($password));
+        for ($i = 0; $i < $this->minLetters; $i++) {
+            $selectedLetters .= $letters[rand(0, strlen($letters) - 1)];
         }
     
-        return str_shuffle($password);
+        for ($i = 0; $i < $this->minNumbers; $i++) {
+            $selectedNumbers .= $numbers[rand(0, strlen($numbers) - 1)];
+        }
+    
+        for ($i = 0; $i < $this->minSymbols; $i++) {
+            $selectedSymbols .= $this->symbols[rand(0, count($symbolsArray) - 1)];
+        }
+    
+        for ($i = 0; $i < $this->minUppercase; $i++) {
+            $selectedUpperCase .= $upperCase[rand(0, strlen($upperCase) - 1)];
+        }
+    
+        for ($i = 0; $i < $this->minLowercase; $i++) {
+            $selectedLowerCase .= $lowerCase[rand(0, strlen($lowerCase) - 1)];
+        }
+    
+        $combinedChars = $selectedLetters . $selectedNumbers . $selectedSymbols . $selectedUpperCase . $selectedLowerCase;
+        $generatedPassword = str_shuffle($combinedChars);
+    
+        $generatedPassword = substr($generatedPassword, 0, rand($this->minLength, $this->maxLength));
+    
+        return $generatedPassword;
     }
+    
 
     public function hash($password) {
         return password_hash($password, PASSWORD_DEFAULT);

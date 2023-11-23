@@ -69,6 +69,8 @@ class Recover {
         }
 
         $userId = $recoveries->getUser($recoveryToken);
+        // Avoids multiple recoveries
+        $recoveries->delete($recoveryToken);
 
         $plainGeneratedPassword = $passwords->generate();
         $hashedGeneratedPassword = $passwords->hash($plainGeneratedPassword);
@@ -77,7 +79,7 @@ class Recover {
 
         $response->set("error", 0);
         $response->set("message", "S'ha generat una nova contrasenya correctament.");
-        $response->set("email", $users->get($userId)->email);
+        $response->set("email", $users->get($userId)["email"]);
         $response->set("password", $plainGeneratedPassword);
         return $response;
     }

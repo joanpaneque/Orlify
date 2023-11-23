@@ -23,7 +23,15 @@
             $query->execute([
                 ":token" => $token
             ]);
-            return $query->fetch()->userId;
+            return $query->fetch()["userId"];
+        }
+
+        public function delete($token) {
+            $sql = "DELETE FROM recoveries WHERE token = :token";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":token" => $token
+            ]);
         }
 
         public function generate($userId) {
