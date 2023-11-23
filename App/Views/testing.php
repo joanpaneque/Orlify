@@ -8,5 +8,7 @@
 <body>
     This is the testing view
     <a href="<?= $recoverUrl ?>">Recover</a>
+
+    <?= $test ?>
 </body>
 </html>

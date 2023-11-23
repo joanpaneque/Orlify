@@ -9,6 +9,7 @@ class Testing {
 
         $userId = $users->getFromEmail("joanpd0@gmail.com");
         $token = $recoveries->generate($userId);
+        
         $recoverUrl = "/recover/newPassword?recoveryToken=" . $token;
 
         $response->set("recoverUrl", $recoverUrl);
