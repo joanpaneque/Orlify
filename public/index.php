@@ -17,14 +17,10 @@ $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 
 $app->get("/recover", [Recover::class, "index"]);
-<<<<<<< HEAD
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
-=======
-
 
 $app->get("/login", [Login::class, "login"]);
->>>>>>> feature-login-redirect
 $app->post("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
 
