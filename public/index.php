@@ -20,6 +20,9 @@ $app->get("/recover", [Recover::class, "index"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 
+$app->get("/groups", [Groups::class, "index"]);
+
+
 $app->get("/login", [Login::class, "login"]);
 $app->post("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
