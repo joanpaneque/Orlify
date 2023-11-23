@@ -28,4 +28,29 @@ class Groups {
 
         return $response;
     }
+
+    public function getMembers($request, $response, $container) {
+
+        $groupId = $request->get(INPUT_GET, 'groupId');
+
+        // Models
+        $users = $container->get("\App\Models\Users");
+        $groups = $container->get("\App\Models\Groups");
+
+        $groupExists = $groups->exists($groupId);
+
+        if (!$groupExists) {
+            $response->set("error", 1);
+            $response->set("message", "Grup no trobat");
+            return $response;
+        }
+
+        $groupUsers = $groups->getUsers($groupId);
+        
+        $response->set("error", 0);
+        $response->set("message", "S'han pogut recuperar els usuaris del grup");
+        $response->set("users", $groupUsers);
+
+        return $response;
+    } 
 }
