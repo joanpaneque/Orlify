@@ -28,7 +28,6 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     cardUrl VARCHAR(255) NOT NULL,
-    avatarImageId INT NOT NULL,
     FOREIGN KEY (roleId) REFERENCES roles(id),
     FOREIGN KEY (avatarImageId) REFERENCES images(id),
     PRIMARY KEY (id)
