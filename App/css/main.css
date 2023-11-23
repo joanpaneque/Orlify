@@ -74,7 +74,7 @@ body {
     color: #565656;
     background: var(--background);
     padding: 0 5px;
-    transition: 0.3s ease-out;
+    transition: 0.1s ease-out;
 }
 
 .inputBlock label {
@@ -83,7 +83,7 @@ body {
     transform: translate(20px, 9px);
     color: #AEAEAE;
     pointer-events: none;
-    transition: 0.3s ease-out;
+    transition: 0.1s ease-out;
 }
 
 .inputBlock input {
@@ -95,7 +95,7 @@ body {
     border: 1px solid #AEAEAE;
     padding: 0 20px;
     font-size: 24px;
-    transition: border-color 0.3s ease-out;
+    transition: border-color 0.1s ease-out;
 }
 
 .inputBlock input:focus {

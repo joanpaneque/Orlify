@@ -19,7 +19,7 @@
                     <label for="email">Correu electrònic</label>
                     <input type="email" name="email" class="inputField" required>
                 </div>
-                <button type="submit" class="roundedRedButton">Enviar correu</button>
+                <button type="submit" class="roundedRedButton">Recuperar accés</button>
             </form>
         </div>
     </div>
