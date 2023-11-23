@@ -11,6 +11,8 @@ $app = new \Emeset\Emeset($container);
 
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/logout", "\App\Controllers\Logout:logout");
+//////////////////
+$app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 
 $app->get(Router::DEFAULT_ROUTE, function ($request, $response) {
     $response->setBody("Hola!");
