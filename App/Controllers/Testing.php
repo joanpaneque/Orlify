@@ -7,7 +7,7 @@ class Testing {
         $users = $container->get("\App\Models\Users");
         $recoveries = $container->get("\App\Models\Recoveries");
 
-        $userId = $users->getFromEmail("joanpd0@gmail.com");
+        $userId = $users->getFromEmail("rrico@cendrassos.net");
         $token = $recoveries->generate($userId);
         $recoverUrl = "/recover/newPassword?recoveryToken=" . $token;
 

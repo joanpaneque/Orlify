@@ -10,6 +10,7 @@
             $this->sql = $sql;
         }
 
+
         public function updatePassword($userId, $password) {
             $sql = "UPDATE users SET password = :password WHERE id = :userId";
             $query = $this->sql->prepare($sql);
