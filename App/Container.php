@@ -16,10 +16,27 @@ class Container extends EmesetContainer {
             return new \App\Models\Groups($container["\App\Models\Database"]->getConnection());
         };
 
-        $this["\App\Models\Users"] = function($container){
+        $this["\App\Models\Recoveries"] = function($container) {
+            return new \App\Models\Recoveries($container["\App\Models\Database"]->getConnection());
+        };
+
+        $this["\App\Models\Users"] = function($container) {
             return new \App\Models\Users($container["\App\Models\Database"]->getConnection());
         };
-        
+
+        $this["\App\Helpers\Passwords"] = function($container) {
+            return new \App\Helpers\Passwords(
+                $container["config"]["passwordPolicy"]["minLength"],
+                $container["config"]["passwordPolicy"]["maxLength"],
+                $container["config"]["passwordPolicy"]["minLetters"],
+                $container["config"]["passwordPolicy"]["minNumbers"],
+                $container["config"]["passwordPolicy"]["minSymbols"],
+                $container["config"]["passwordPolicy"]["minUppercase"],
+                $container["config"]["passwordPolicy"]["minLowercase"],
+                $container["config"]["passwordPolicy"]["symbols"]
+            );
+        };
+
         $this["\App\Models\Database"] = function($container) {
             return new \App\Models\Database(
                 $container["config"]["database"]["user"],
