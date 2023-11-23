@@ -6,7 +6,7 @@ module.exports = {
   target: 'web',
 
   mode: 'development',
-    
+
   entry: {
     index: path.join(__dirname, 'App/js/index.js'),
   },
@@ -27,7 +27,7 @@ module.exports = {
         test: /\.css$/i,
         type: 'asset/resource',
         generator: {
-            filename: '[name][ext][query]'
+          filename: '[name][ext][query]'
         }
       }
     ],
@@ -37,6 +37,6 @@ module.exports = {
     extensions: ['.js', '.ts'],
   }
 
-  
-    
+
+
 };

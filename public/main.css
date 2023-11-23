@@ -532,6 +532,9 @@ video {
 .mb-8 {
   margin-bottom: 2rem;
 }
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .flex {
   display: flex;
 }
@@ -603,6 +606,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -660,4 +667,53 @@ body {
     .grayMessage {
         font-size: 20px;
     }
+}
+
+.inputBlock {
+    text-align: left;
+    margin: 0 auto;
+    width: 320px;
+    height: 56px;
+    position: relative;
+}
+
+.inputBlock label.active {
+    transform: translate(20px, -12px);
+    font-size: 16px;
+    color: #565656;
+    background: var(--background);
+    padding: 0 5px;
+    transition: 0.3s ease-out;
+}
+
+.inputBlock label {
+    font-size: 24px;
+    position: absolute;
+    transform: translate(20px, 9px);
+    color: #AEAEAE;
+    pointer-events: none;
+    transition: 0.3s ease-out;
+}
+
+.inputBlock input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: none;
+    border: 1px solid #AEAEAE;
+    padding: 0 20px;
+    font-size: 24px;
+    transition: border-color 0.3s ease-out;
+}
+
+.inputBlock input:focus {
+    border: 3px solid #565656;
+    outline: none;
+}
+
+
+form {
+    display: grid;
+    gap: 20px;
 }
