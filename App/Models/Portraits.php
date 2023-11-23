@@ -1,6 +1,4 @@
 <?php
-
-
     namespace App\Models;
 
     class Portraits {
