@@ -943,25 +943,6 @@ form {
     border-radius: 2px;
 }
 
-.DataTableInput {
-    width: 100%;
-    padding: 8px;
-    background: none;
-    outline: none;
-}
-
-.DataTableSelect {
-    width: 100%;
-    border-radius: 5px;
-    background: var(--primary);
-    color: #fff;
-
-}
-
-td {
-    padding: 0 !important;
-}
-
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }

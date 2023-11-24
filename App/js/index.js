@@ -1,11 +1,8 @@
-import $ from "jquery";
+import Emesis from "./Emesis/Emesis.js";
+// Allocators
+import inputBlock from "./Allocators/inputBlock.js";
 
-import hola from "./hola.js";
-
-import {Example, obj} from "./example.ts";
-
-$(function() {
-    console.log('Hello World');
-    hola();
-    console.log("Example", obj);
+// "reciever": allocator
+const emesis = new Emesis({
+    "inputBlock": inputBlock,
 });
