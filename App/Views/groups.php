@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>    
@@ -13,13 +13,13 @@
     <div class="container mx-auto min-h-screen bg-gray-100 p-4">
         <div class="max-w-3xl mx-auto space-y-8">
             <div>
-                <h1 class="mt-8 text-center text-6xl font-extrabold text-red-500">
+                <h1 class="mt-8 text-center text-5xl font-extrabold text-red-500">
                     Administra les teves classes!
                 </h1>
             </div>
             <form class="mt-8 space-y-6" action="process.php" method="POST" enctype="multipart/form-data">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-3 md:col-span-1">
+                <div class="grid grid-cols-5 gap-4">
+                    <div class="col-span-3 md:col-span-6">
                         <label for="class" class="sr-only">Classe</label>
                         <select id="class" name="class" class="js-select2 appearance-none w-full px-3 py-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-base">
                             <option value="" disabled selected>Selecciona una classe</option>
@@ -29,7 +29,7 @@
                             <option value="profesor">Profesor</option>
                         </select>
                     </div>
-                    <div class="col-span-3 md:col-span-1">
+                    <div class="col-span-3 md:col-span-6">
                         <label for="members" class="sr-only">Membres</label>
                         <select id="members" name="members" class="js-select2 appearance-none w-full px-3 py-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-base">
                             <option value="" disabled selected>Selecciona el número de membres</option>
