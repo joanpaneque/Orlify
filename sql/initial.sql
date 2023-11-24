@@ -37,7 +37,10 @@ CREATE TABLE users (
 );
 
 INSERT INTO users VALUES (NULL, 1, "Joan", "Paneque Domingo", "jpaneque", "joanpd0@gmail.com", "1234", NULL, NULL);
-
+INSERT INTO users VALUES (NULL, 1, "Joan2", "Paneque Domingo2", "jpaneque2", "joanpd0@gmail.com2", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "Joan3", "Paneque Domingo3", "jpaneque3", "joanpd0@gmail.com3", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "Joan4", "Paneque Domingo4", "jpaneque4", "joanpd0@gmail.com4", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "Joan5", "Paneque Domingo5", "jpaneque5", "joanpd0@gmail.com5", "1234", NULL, NULL);
 
 CREATE TABLE recoveries (
     id INT AUTO_INCREMENT,

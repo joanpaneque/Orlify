@@ -15,32 +15,18 @@
     <table class="display" id="adminTable">
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Cognoms</th>
                 <th>Nom d'usuari</th>
-                <th>Correu electrònic</th>
                 <th>Rol</th>
-                <th>Carnet</th>
                 <th>Accions</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($users as $user) { ?>
                 <tr userId="<?=$user["id"]?>">
-                    <td><input class="DataTableInput" type="text" name="name" id="name" value="<?=$user["name"]?>"></td>
-                    <td><input class="DataTableInput" type="text" name="surnames" id="surnames" value="<?=$user["surnames"]?>"></td>
-                    <td><input class="DataTableInput" type="text" name="username" id="username" value="<?=$user["username"]?>"></td>
-                    <td><input class="DataTableInput" type="text" name="email" id="email" value="<?=$user["email"]?>"></td>
+                    <td><?=$user["username"]?></td>
+                    <td><?= $roles[array_search($user["roleId"], array_column($roles, 'id'))]["name"]?></td>
                     <td>
-                        <select class="DataTableSelect" name="role" id="role">
-                            <?php foreach ($roles as $role) { ?>
-                                <option value="<?=$role["id"]?>" <?php if($user["roleId"] == $role["id"]) echo "selected"; ?>><?=$role["name"]?></option>
-                            <?php } ?>
-                        </select>
-                    </td>
-                    <td><?=$user["cardUrl"]?></td>
-                    <td>
-                        <button class="updateUser">Actualitzar</button>
+                        <button class="updateUser">Editar</button>
                         <button class="deleteUser">Eliminar</button>
                     </td>
                 </tr>
