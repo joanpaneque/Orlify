@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta allocation="inputBlock">
     <link rel="stylesheet" href="/main.css">
-    <script src="/js/bundle.js" defer></script>
+    <script src="/js/bundle.js"></script>
+    <meta allocation="inputBlock">
     <title>Recuperar contrasenya</title>
 </head>
 <body view="recover.php">
