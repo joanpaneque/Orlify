@@ -13,7 +13,6 @@ class Login {
         // Models
         $users = $container->get("\App\Models\Users");
 
-
         $userId = $users->getFromEmail($email);
 
         if (!$userId) {
@@ -25,9 +24,11 @@ class Login {
 
         if (!$passwords->verify($password, $hashedPassword)) {
             $response->redirect("Location: /testing");  
-            return $response;          
+            return $response;
         }
 
+        $response->setSession("userId", $userId);
+        $response->setSession("logged", true);        
         $response->redirect("Location: /index");
         return $response;
     }

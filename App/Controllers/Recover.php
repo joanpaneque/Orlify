@@ -7,61 +7,59 @@ use PHPMailer\PHPMailer\Exception;
 
 class Recover {
     public function index($request, $response, $container){ 
-        
-        $response->SetTemplate("recover.php");
-
+        $response->setTemplate("recover.php");
         return $response;
     }    
 
 
-    public function sendMail($request,$response,$container){ // composer require phpmailer/phpmailer
-
+    public function sendMail($request, $response, $container) {
+        // Input data
         $email = $request->get(INPUT_POST, "email");
+
+        // Models
+        $users = $container->get("\App\Models\Users");
+        $recoveries = $container->get("\App\Models\Recoveries");
      
+        // Validation
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $response->redirect("Location: /recover");
             return $response;
         }
-        
-        $users = $container->get("\App\Models\Users");
-        $recoveries = $container->get("\App\Models\Recoveries");
 
         $userId = $users->getFromEmail($email);
 
         if ($userId) {
             $token = $recoveries->generate($userId);
-            $recoverUrl = "http://localhost:8080/recover/newPassword?recoveryToken={$token}";
 
+            $recoverUrl = "{$container["config"]["host"]}/recover/newPassword?recoveryToken={$token}";
+            
             $oMail = new PHPMailer(true);
     
             try {
-                // Configuración del servidor SMTP para Gmail
                 $oMail->isSMTP();
-                $oMail->Host = 'smtp-es.securemail.pro';
-                $oMail->Port = 465;
-                $oMail->SMTPSecure = 'ssl';
-                $oMail->SMTPAuth = true;
+                $oMail->Host = $container["config"]["smtp"]["host"];
+                $oMail->Port = $container["config"]["smtp"]["port"];
+                $oMail->SMTPSecure = $container["config"]["smtp"]["secure"];
+                $oMail->SMTPAuth = $container["config"]["smtp"]["auth"];
     
-                // Configuración de credenciales de Gmail
-                $oMail->Username = 'recovery@orlify.es';
-                $oMail->Password = '6VhE3&7@ul%!E';
+                $oMail->Username = $container["config"]["smtp"]["username"];
+                $oMail->Password = $container["config"]["smtp"]["password"];
     
-                // Configuración del remitente y destinatario
-                $oMail->setFrom('recovery@orlify.es', 'Recuperador de contrasenyes');
+                $oMail->setFrom($container["config"]["smtp"]["username"], 'Recuperador de contrasenyes');
                 $oMail->addAddress($email, 'usuari');
     
-                // Configuración del asunto y cuerpo del correo
                 $oMail->isHTML(true);
                 $oMail->Subject = "Link per recuperar al teu compte";
-                $oMail->Body = "Hola soy un mensaje <b>en negrita</b>, <a href ='{$recoverUrl}'>Link recuperar contrasenya</a> ";
+                $oMail->Body = "Recupera la teva contrasenya fent clic a aquest <a href='{$recoverUrl}'>enllaç</a>.";
     
-                // Envío del correo
                 $oMail->send();
             } catch (Exception $e) {
-                echo 'Error al enviar el correo: ' . $oMail->ErrorInfo;
+                // While we don't have a logger, we'll just ignore the exception.
+                // We don't want to show the user an error message.
             }
         }
         
+        $response->set("email", $email);
         $response->setTemplate("sendMail.php");
         return $response;
     }
