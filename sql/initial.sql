@@ -8,10 +8,10 @@ CREATE TABLE roles (
     PRIMARY KEY (id)
 );
 
-INSERT INTO roles(name) VALUES ("student");
-INSERT INTO roles(name) VALUES ("teacher");
-INSERT INTO roles(name) VALUES ("manager");
-INSERT INTO roles(name) VALUES ("admin");
+INSERT INTO roles (name) VALUES ("student");
+INSERT INTO roles (name) VALUES ("teacher");
+INSERT INTO roles (name) VALUES ("manager");
+INSERT INTO roles (name) VALUES ("admin");
 
 CREATE TABLE images (
     id INT NOT NULL AUTO_INCREMENT,
@@ -23,14 +23,24 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT,
     roleId INT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    surnames VARCHAR(255) NOT NULL,
+    surnames VARCHAR(255),
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    cardUrl VARCHAR(255) NOT NULL,
+    cardUrl VARCHAR(255),
+    mainPortraitImageId INT,
+    UNIQUE (username),
+    UNIQUE (email),
     FOREIGN KEY (roleId) REFERENCES roles(id),
+    FOREIGN KEY (mainPortraitImageId) REFERENCES images(id),
     PRIMARY KEY (id)
 );
+
+INSERT INTO users VALUES (NULL, 1, "prueba", "prueba", "prueba", "pruebap@gmail.com", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba2", "prueba2", "prueba2", "pruebap@gmail.com2", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba3", "prueba3", "prueba3", "pruebap@gmail.com3", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba4", "prueba4", "prueba4", "pruebap@gmail.com4", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba5", "prueba5", "prueba5", "pruebap@gmail.com5", "1234", NULL, NULL);
 
 CREATE TABLE recoveries (
     id INT AUTO_INCREMENT,
