@@ -12,6 +12,7 @@
 
 body {
     background: var(--background);
+    font-family: 'Inter', sans-serif;
 }
 
 .titleBottomBar {
@@ -23,9 +24,8 @@ body {
 }
 
 .title {
-    font-size: 48px;
+    font-size: 45px;
     font-weight: 800;
-    font-family: 'Inter', sans-serif;
     line-height: 58px;
     text-align: center;
     color: var(--primary)
@@ -35,11 +35,12 @@ body {
     padding: 25px;
 }
 
-.roundedRedButton {
-    background: var(--primary);
+.roundedRedButton,
+.roundedGrayButton {
     color: #fff;
     height: 53px;
-    width: 162px;
+    max-width: 162px;
+    padding: 20px;
     border-radius: 300px;
     font-size: 16px;
     font-weight: bold;
@@ -47,6 +48,15 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+}
+
+.roundedRedButton {
+    background: var(--primary);
+
+}
+
+.roundedGrayButton {
+    background: #AEAEAE;
 }
 
 .grayMessage {
@@ -63,7 +73,8 @@ body {
 .inputBlock {
     text-align: left;
     margin: 0 auto;
-    width: 320px;
+    /* width: 320px; */
+    width: 100%;
     height: 56px;
     position: relative;
 }
@@ -107,4 +118,28 @@ body {
 form {
     display: grid;
     gap: 20px;
+}
+
+.loginCheckbox {
+    width: 25px;
+    height: 25px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 2px solid #AEAEAE;
+    border-radius: 5px;
+    position: relative;
+}
+
+.loginCheckbox:checked {}
+
+.loginCheckbox:checked::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    right: 3px;
+    bottom: 4px;
+    background-color: #AEAEAE;
+    border-radius: 2px;
 }
