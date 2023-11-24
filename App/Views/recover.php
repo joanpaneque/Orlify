@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/main.css">
-    <script src="/bundle.js"></script>
     <title>Recuperar contrasenya</title>
 </head>
 <body>
@@ -44,9 +43,6 @@
         });
 
         firstInput.focus();
-
-
-
     </script>
 </body>
 </html>
