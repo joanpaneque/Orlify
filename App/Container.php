@@ -37,6 +37,10 @@ class Container extends EmesetContainer {
             );
         };
 
+        $this["\App\Models\Roles"] = function($container) {
+            return new \App\Models\Roles($container["\App\Models\Database"]->getConnection());
+        };
+
         $this["\App\Models\Database"] = function($container) {
             return new \App\Models\Database(
                 $container["config"]["database"]["user"],

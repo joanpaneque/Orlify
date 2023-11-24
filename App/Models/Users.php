@@ -10,7 +10,6 @@
             $this->sql = $sql;
         }
 
-
         public function updatePassword($userId, $password) {
             $sql = "UPDATE users SET password = :password WHERE id = :userId";
             $query = $this->sql->prepare($sql);
@@ -36,5 +35,12 @@
                 ":email" => $email
             ]);
             return $query->fetch()["id"];
+        }
+
+        public function getAll() {
+            $sql = "SELECT * FROM users";
+            $query = $this->sql->prepare($sql);
+            $query->execute();
+            return $query->fetchAll();
         }
     }

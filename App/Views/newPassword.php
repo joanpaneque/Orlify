@@ -21,8 +21,11 @@
             <?php if (!$error) { ?>
                 <p class="text-gray-700">Correu: <strong><?=$email?></strong></p>
                 <p class="text-gray-700">Contrasenya: <strong><?=$password?></strong></p> 
+                <a href="/login?email=<?=$email?>" class="roundedRedButton">Iniciar sessió</a>
+            <?php } else { ?>
+                <a href="/recover" class="roundedGrayButton">Tornar a recuperar</a>
+                <a href="/login" class="roundedRedButton">Iniciar sessió</a>
             <?php } ?>
-            <a href="/login" class="roundedRedButton">Iniciar sessió</a>
         </div>
     </div>
 </body>

@@ -6,6 +6,7 @@ use \App\Controllers\Recover;
 use \App\Controllers\Login;
 use \App\Controllers\Logout;
 use \App\Controllers\Testing;
+use \App\Controllers\Admin;
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "../vendor/autoload.php";
@@ -19,9 +20,14 @@ $app->get("/recover", [Recover::class, "index"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 $app->get("/groups", [Groups::class, "index"]);
-$app->get("/login", [Login::class, "login"]);
+
+$app->post("/login", [Login::class, "login"]);
+$app->get("/login", [Login::class, "index"]);
+
 $app->post("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
+
+$app->get("/admin", [Admin::class, "index"]);
 
 
 $app->get("/index", function ($request, $response) {

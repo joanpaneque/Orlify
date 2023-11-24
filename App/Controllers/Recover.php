@@ -11,7 +11,6 @@ class Recover {
         return $response;
     }    
 
-
     public function sendMail($request, $response, $container) {
         // Input data
         $email = $request->get(INPUT_POST, "email");
