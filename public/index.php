@@ -18,13 +18,7 @@ $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/recover", [Recover::class, "index"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
-<<<<<<< HEAD
-
 $app->get("/groups", [Groups::class, "index"]);
-
-
-=======
->>>>>>> polishing
 $app->get("/login", [Login::class, "login"]);
 $app->post("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
