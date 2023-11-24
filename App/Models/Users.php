@@ -37,10 +37,26 @@
             return $query->fetch()["id"];
         }
 
+
         public function getAll() {
             $sql = "SELECT * FROM users";
             $query = $this->sql->prepare($sql);
             $query->execute();
             return $query->fetchAll();
+        }
+
+        public function imageBelongsTo($userId, $imageId){
+            $sql = "SELECT * FROM portraitsUsersImages WHERE userId = :userId AND imageId = :imageId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":userId" => $userId, ":imageId" => $imageId]);
+    
+            return $query->rowCount() > 0;
+        }
+
+        public function updatePortraitImage($userId, $imageId){
+            $sql = "UPDATE users SET mainPortraitImageId = :imageId WHERE id = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":userId" => $userId, ":imageId" => $imageId]);
+
         }
     }

@@ -7,6 +7,7 @@ use \App\Controllers\Login;
 use \App\Controllers\Logout;
 use \App\Controllers\Testing;
 use \App\Controllers\Admin;
+use \App\Controllers\Users;
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "../vendor/autoload.php";
@@ -16,6 +17,9 @@ $app = new \Emeset\Emeset($container);
 
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
+$app->get("/ajax/users/images", [Users::class, "setMainImage"]);
+
+
 $app->get("/recover", [Recover::class, "index"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);

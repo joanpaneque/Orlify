@@ -36,11 +36,11 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
-INSERT INTO users VALUES (NULL, 1, "Joan", "Paneque Domingo", "jpaneque", "joanpd0@gmail.com", "1234", NULL, NULL);
-INSERT INTO users VALUES (NULL, 1, "Joan2", "Paneque Domingo2", "jpaneque2", "joanpd0@gmail.com2", "1234", NULL, NULL);
-INSERT INTO users VALUES (NULL, 1, "Joan3", "Paneque Domingo3", "jpaneque3", "joanpd0@gmail.com3", "1234", NULL, NULL);
-INSERT INTO users VALUES (NULL, 1, "Joan4", "Paneque Domingo4", "jpaneque4", "joanpd0@gmail.com4", "1234", NULL, NULL);
-INSERT INTO users VALUES (NULL, 1, "Joan5", "Paneque Domingo5", "jpaneque5", "joanpd0@gmail.com5", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba", "prueba", "prueba", "pruebap@gmail.com", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba2", "prueba2", "prueba2", "pruebap@gmail.com2", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba3", "prueba3", "prueba3", "pruebap@gmail.com3", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba4", "prueba4", "prueba4", "pruebap@gmail.com4", "1234", NULL, NULL);
+INSERT INTO users VALUES (NULL, 1, "prueba5", "prueba5", "prueba5", "pruebap@gmail.com5", "1234", NULL, NULL);
 
 CREATE TABLE recoveries (
     id INT AUTO_INCREMENT,

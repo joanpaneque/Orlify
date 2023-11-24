@@ -559,7 +559,17 @@ video {
 }
 .mb-2 {
   margin-bottom: 0.5rem;
+<<<<<<< HEAD
 }
+=======
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+>>>>>>> feature-setMainImage
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -611,6 +621,12 @@ video {
 .w-12 {
   width: 3rem;
 }
+<<<<<<< HEAD
+=======
+.w-16 {
+  width: 4rem;
+}
+>>>>>>> feature-setMainImage
 .w-4 {
   width: 1rem;
 }
@@ -707,6 +723,13 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
+<<<<<<< HEAD
+=======
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+>>>>>>> feature-setMainImage
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -732,6 +755,13 @@ video {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
+<<<<<<< HEAD
+=======
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+>>>>>>> feature-setMainImage
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
