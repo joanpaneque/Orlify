@@ -26,4 +26,13 @@
             ]);
         }
 
+
+        public function tooglePortrait($portraitId){
+            $sql = "UPDATE portraits SET activated = NOT activated where id = :PortraitId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":PortraitId" => $portraitId
+            ]);
+        }
+
     }
