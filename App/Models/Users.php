@@ -96,6 +96,7 @@
             $sql = " DELETE FROM users where id = :userId";
             $query = $this->sql->prepare($sql);
             $result = $query->execute([":userId" => $userId]);
-            return $result;
+            $rowCount = $query->rowCount();
+            return ($rowCount > 0);
         }
     }   
