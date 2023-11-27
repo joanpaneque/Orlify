@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Emesis_Emesis_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Emesis/Emesis.js */ \"./App/js/Emesis/Emesis.js\");\n/* harmony import */ var _Allocators_inputBlock_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Allocators/inputBlock.js */ \"./App/js/Allocators/inputBlock.js\");\n\r\n// Allocators\r\n\r\n\r\n// \"reciever\": allocator\r\nconst emesis = new _Emesis_Emesis_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\r\n    \"inputBlock\": _Allocators_inputBlock_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\r\n});\n\n//# sourceURL=webpack:///./App/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Emesis_Emesis_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Emesis/Emesis.js */ \"./App/js/Emesis/Emesis.js\");\n/* harmony import */ var _Allocators_inputBlock_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Allocators/inputBlock.js */ \"./App/js/Allocators/inputBlock.js\");\n\r\n// Allocators\r\n\r\n// \"reciever\": allocator\r\nconst emesis = new _Emesis_Emesis_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\r\n    \"inputBlock\": _Allocators_inputBlock_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],   \r\n});\n\n//# sourceURL=webpack:///./App/js/index.js?");
 
 /***/ })
 

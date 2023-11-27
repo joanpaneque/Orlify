@@ -121,6 +121,12 @@ body {
     position: relative;
 }
 
+.hhh {
+    width: 400px;
+    margin: 0 auto;
+}
+
+
 .inputBlock label.active {
     transform: translate(20px, -12px);
     font-size: 16px;
@@ -130,6 +136,7 @@ body {
     transition: 0.1s ease-out;
 }
 
+
 .inputBlock label {
     font-size: 24px;
     position: absolute;
@@ -138,6 +145,7 @@ body {
     pointer-events: none;
     transition: 0.1s ease-out;
 }
+
 
 .inputBlock input {
     display: block;
