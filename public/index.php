@@ -8,6 +8,7 @@ use \App\Controllers\Logout;
 use \App\Controllers\Testing;
 use \App\Controllers\Admin;
 use \App\Controllers\Users;
+use \App\Controllers\Register;
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "../vendor/autoload.php";
@@ -38,6 +39,7 @@ $app->get("/index", function ($request, $response) {
     $response->setBody("Logged in!");
     return $response;
 });
+$app->get("/register", [Register::class, "index"]);
 
 $app->get(Router::DEFAULT_ROUTE, function ($request, $response) {
     $response->setBody("Hola!");

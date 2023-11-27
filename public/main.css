@@ -538,11 +538,17 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
+.left-0 {
+  left: 0px;
+}
 .right-0 {
   right: 0px;
 }
 .right-20 {
   right: 5rem;
+}
+.top-0 {
+  top: 0px;
 }
 .col-span-3 {
   grid-column: span 3 / span 3;
@@ -559,22 +565,15 @@ video {
 }
 .mb-2 {
   margin-bottom: 0.5rem;
-<<<<<<< HEAD
 }
-=======
-}
-.mb-4 {
-  margin-bottom: 1rem;
-}
-.mb-8 {
-  margin-bottom: 2rem;
-}
->>>>>>> feature-setMainImage
 .ml-2 {
   margin-left: 0.5rem;
 }
 .mr-2 {
   margin-right: 0.5rem;
+}
+.mt-10 {
+  margin-top: 2.5rem;
 }
 .mt-6 {
   margin-top: 1.5rem;
@@ -618,15 +617,12 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .w-12 {
   width: 3rem;
 }
-<<<<<<< HEAD
-=======
-.w-16 {
-  width: 4rem;
-}
->>>>>>> feature-setMainImage
 .w-4 {
   width: 1rem;
 }
@@ -642,6 +638,12 @@ video {
 .max-w-lg {
   max-width: 32rem;
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
+.flex-grow {
+  flex-grow: 1;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -655,6 +657,12 @@ video {
 }
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
 }
 .items-center {
   align-items: center;
@@ -723,13 +731,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-=======
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
->>>>>>> feature-setMainImage
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -755,13 +760,6 @@ video {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-<<<<<<< HEAD
-=======
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
->>>>>>> feature-setMainImage
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -791,6 +789,9 @@ video {
   font-size: 1rem;
   line-height: 1.5rem;
 }
+.font-bold {
+  font-weight: 700;
+}
 .font-extrabold {
   font-weight: 800;
 }
@@ -814,6 +815,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -825,6 +830,10 @@ video {
 .placeholder-gray-500::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(107 114 128 / var(--tw-placeholder-opacity));
+}
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -847,6 +856,14 @@ body {
     border-radius: 5px;
     margin: 0 auto;
 }
+.titleBottomBar2 {
+    height: 5px;
+    width: 75px;
+    background: white;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+}
 
 .title {
     font-size: 45px;
@@ -854,6 +871,25 @@ body {
     line-height: 58px;
     text-align: center;
     color: var(--primary)
+}
+.titlered {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    line-height: 58px;
+    text-align: center;
+    color: var(--primary);
+    margin-top: 2.5rem;
+    
+}
+.title2 {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    line-height: 58px;
+    text-align: center;
+    color: white;
+    margin-top: 2.5rem;
 }
 
 .padding {
@@ -873,6 +909,21 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+}
+.roundedWhiteButton {
+    background: transparent;
+    color: #fff;
+    height: 53px;
+    width: 162px;
+    border-radius: 300px;
+    border: 2px solid white; /* Añade un borde blanco */
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 2.5rem;
 }
 
 .roundedRedButton {
@@ -1004,5 +1055,12 @@ form {
 
   .md\:col-span-4 {
     grid-column: span 4 / span 4;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .lg\:flex {
+    display: flex;
   }
 }

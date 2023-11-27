@@ -22,6 +22,14 @@ body {
     border-radius: 5px;
     margin: 0 auto;
 }
+.titleBottomBar2 {
+    height: 5px;
+    width: 75px;
+    background: white;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+}
 
 .title {
     font-size: 45px;
@@ -29,6 +37,25 @@ body {
     line-height: 58px;
     text-align: center;
     color: var(--primary)
+}
+.titlered {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    line-height: 58px;
+    text-align: center;
+    color: var(--primary);
+    margin-top: 2.5rem;
+    
+}
+.title2 {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    line-height: 58px;
+    text-align: center;
+    color: white;
+    margin-top: 2.5rem;
 }
 
 .padding {
@@ -48,6 +75,21 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+}
+.roundedWhiteButton {
+    background: transparent;
+    color: #fff;
+    height: 53px;
+    width: 162px;
+    border-radius: 300px;
+    border: 2px solid white; /* Añade un borde blanco */
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 2.5rem;
 }
 
 .roundedRedButton {

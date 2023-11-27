@@ -46,7 +46,7 @@ class Groups {
         $groups = $container->get("\App\Models\Groups");
 
         $groupExists = $groups->exists($groupId);
-
+        
         if (!$groupExists) {
             $response->set("error", 1);
             $response->set("message", "Grup no trobat");
