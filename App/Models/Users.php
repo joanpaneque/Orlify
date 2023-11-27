@@ -59,6 +59,12 @@
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
 
         }
+        public function updateUsers($userId,$roleId,$name,$surname,$username,$email,$password,$cardurl,$mainPortraitId) {
+            $sql = "UPDATE users SET mainPortraitImageId = :imageId, roleId = :roleId, name = :name, surname = :surname, username = :username, email = :email, password = :password, cardurl = :cardurl, mainportraitid = :mainportraitid WHERE id = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":userId" => $userId, ":roleId" => $roleId, ":name" => $name, ":surname" => $surname, ":username" => $username, ":email" => $email, ":password" => $password, ":cardurl" => $cardurl,":mainportraitid" => $mainPortraitId]);
+
+        }
 
         public function getMainImage($userId) {
             $sql = "SELECT mainPortraitImageId FROM users WHERE id = :userId";
@@ -78,8 +84,8 @@
             return $query->fetchAll(\PDO::FETCH_COLUMN);
         }
 
-        public function comparePortraitImage($userId){
-            $sql = "SELECT * FROM users u JOIN portraitsusersimages p ON u.id = p.userId WHERE u.id = :userId AND p.imageId = u.mainPortraitImageId;";
+        public function portraitExsist($userId){
+            $sql = "SELECT * FROM portraitsusersimages WHERE userId = :userId";
             $query = $this->sql->prepare($sql);
             $query->execute([":userId" => $userId]);
 

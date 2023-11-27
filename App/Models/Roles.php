@@ -14,4 +14,11 @@
             $query->execute();
             return $query->fetchAll();
         }
+
+        public function exist($roleId){
+            $sql = "SELECT * FROM roles where id = :roleId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":roleId" => $roleId]);
+            return $query->fetchAll();
+        }
     }
