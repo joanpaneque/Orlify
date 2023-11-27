@@ -91,4 +91,11 @@
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
 
         }
-    }
+        
+        public function deleteUser($userId){
+            $sql = " DELETE FROM users where id = :userId";
+            $query = $this->sql->prepare($sql);
+            $result = $query->execute([":userId" => $userId]);
+            return $result;
+        }
+    }   
