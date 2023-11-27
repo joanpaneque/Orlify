@@ -26,13 +26,23 @@
             ]);
         }
 
-
-        public function tooglePortrait($portraitId){
-            $sql = "UPDATE portraits SET activated = NOT activated where id = :PortraitId";
+        public function isActivated($groupId) {
+            $sql = "SELECT activated FROM portraits WHERE groupId = :groupId";
             $query = $this->sql->prepare($sql);
             $query->execute([
-                ":PortraitId" => $portraitId
+                ":groupId" => $groupId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
+        }
+        
+        public function togglePortrait($groupId){
+            $sql = "UPDATE portraits SET activated = !activated where groupId = :groupId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":groupId" => $groupId
             ]);
         }
+
+        
 
     }

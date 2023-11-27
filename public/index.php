@@ -8,6 +8,7 @@ use \App\Controllers\Logout;
 use \App\Controllers\Testing;
 use \App\Controllers\Admin;
 use \App\Controllers\Users;
+use \App\Controllers\Portrait;
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "../vendor/autoload.php";
@@ -17,7 +18,9 @@ $app = new \Emeset\Emeset($container);
 
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
-$app->get("/ajax/users/images", [Users::class, "setMainImage"]);
+$app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
+$app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
+$app->get("/activated", [Portrait::class, "togglePortrait"]);
 
 
 $app->get("/recover", [Recover::class, "index"]);
