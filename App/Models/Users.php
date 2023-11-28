@@ -59,6 +59,19 @@
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
 
         }
+        public function updateUsers($userId, $roleId, $name, $surnames, $username, $email, $password) {
+            $sql = "UPDATE users SET roleId = :roleId, name = :name, surnames = :surnames, username = :username, email = :email, password = :password WHERE id = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":userId" => $userId,
+                ":roleId" => $roleId,
+                ":name" => $name,
+                ":surnames" => $surnames,
+                ":username" => $username,
+                ":email" => $email,
+                ":password" => $password
+            ]);
+        }
 
         public function getMainImage($userId) {
             $sql = "SELECT mainPortraitImageId FROM users WHERE id = :userId";
@@ -78,13 +91,20 @@
             return $query->fetchAll(\PDO::FETCH_COLUMN);
         }
 
-        public function comparePortraitImage($userId){
-            $sql = "SELECT * FROM users u JOIN portraitsusersimages p ON u.id = p.userId WHERE u.id = :userId AND p.imageId = u.mainPortraitImageId;";
+        public function emailExsist($email){
+            $sql = "SELECT * FROM users WHERE email = :email";
             $query = $this->sql->prepare($sql);
-            $query->execute([":userId" => $userId]);
-
+            $query->execute([":email" => $email]);
+            return $query->fetchAll();
         }
         
+        public function userNameExsist($username){
+            $sql = "SELECT * FROM users WHERE username = :username";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":username" => $username]);
+            return $query->fetchAll();
+        }
+
         public function deletePortraitImage($userId, $imageId){
             $sql = " DELETE FROM portraitsusersimages WHERE userId = :userId AND imageId = :imageId;";
             $query = $this->sql->prepare($sql);
@@ -99,4 +119,12 @@
             $rowCount = $query->rowCount();
             return ($rowCount > 0);
         }
-    }   
+
+        public function getPassword($userId){
+            $sql = "SELECT password FROM users WHERE Id = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":userId" => $userId]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
+        }
+    }
+

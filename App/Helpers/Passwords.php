@@ -61,7 +61,6 @@ class Passwords {
         return $generatedPassword;
     }
     
-
     public function hash($password) {
         return password_hash($password, PASSWORD_DEFAULT);
     }
@@ -69,4 +68,45 @@ class Passwords {
     public function verify($password, $hash) {
         return password_verify($password, $hash);
     }
-}
+
+    public function meetsDirectives($password) {
+        $upperCaseLetters = "ABCDEFGHIJKLMNOQPRSTUVWXYZ";
+        $lowerCaseLetters = strtolower($upperCaseLetters);
+        $numbers = "0123456789";
+        $symbols = "!@#$%^&*()_-=+{}[]";
+    
+        $letters = $upperCaseLetters . $lowerCaseLetters;
+    
+        if (strlen($password) < $this->minLength || strlen($password) > $this->maxLength) {
+            return false;
+        }
+    
+        $letras = preg_match_all('/[' . $letters . ']/', $password, $matches);
+        if ($letras < $this->minLetters) {
+            return false;
+        }
+    
+        $numeros = preg_match_all('/[' . $numbers . ']/', $password, $matches);
+        if ($numeros < $this->minNumbers) {
+            return false;
+        }
+    
+        $simbolos = preg_match_all('/[' . preg_quote($symbols, '/') . ']/', $password, $matches);
+        if ($simbolos < $this->minSymbols) {
+            return false;
+        }
+    
+        $mayusculas = preg_match_all('/[' . $upperCaseLetters . ']/', $password, $matches);
+        if ($mayusculas < $this->minLowercase) {
+            return false;
+        }
+    
+        $minusculas = preg_match_all('/[' . $lowerCaseLetters . ']/', $password, $matches);
+        if ($minusculas < $this->minUppercase) {
+            return false;
+        }
+    
+        return true;
+    }    
+    
+    }

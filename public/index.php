@@ -24,6 +24,8 @@ $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
 $app->get("/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/delete", [DeleteUser::Class,"delete"]);
+$app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]);
+$app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
 
 
 $app->get("/recover", [Recover::class, "index"]);
