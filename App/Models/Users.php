@@ -59,11 +59,10 @@
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
 
         }
-        public function updateUsers($userId, $roleId, $name, $surnames, $username, $email, $password) {
-            $sql = "UPDATE users SET roleId = :roleId, name = :name, surnames = :surnames, username = :username, email = :email, password = :password WHERE id = :userId";
+        public function insertUser($roleId, $name, $surnames, $username, $email, $password) {
+            $sql = "INSERT INTO users (roleId, name, surnames, username, email, password) VALUES (:roleId, :name, :surnames, :username, :email, :password)";
             $query = $this->sql->prepare($sql);
             $query->execute([
-                ":userId" => $userId,
                 ":roleId" => $roleId,
                 ":name" => $name,
                 ":surnames" => $surnames,
@@ -72,6 +71,7 @@
                 ":password" => $password
             ]);
         }
+        
 
         public function getMainImage($userId) {
             $sql = "SELECT mainPortraitImageId FROM users WHERE id = :userId";
