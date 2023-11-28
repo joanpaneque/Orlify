@@ -21,8 +21,8 @@ $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
-$app->get("/activated", [Portrait::class, "togglePortrait"]);
-$app->get("/password", [Admin::class, "updateUser"]);
+$app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]);
+$app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
 
 
 $app->get("/recover", [Recover::class, "index"]);

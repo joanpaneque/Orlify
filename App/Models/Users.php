@@ -59,11 +59,18 @@
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
 
         }
-        public function updateUsers($userId,$roleId,$name,$surname,$username,$email,$password,$cardurl,$mainPortraitId) {
-            $sql = "UPDATE users SET mainPortraitImageId = :imageId, roleId = :roleId, name = :name, surname = :surname, username = :username, email = :email, password = :password, cardurl = :cardurl, mainportraitid = :mainportraitid WHERE id = :userId";
+        public function updateUsers($userId, $roleId, $name, $surnames, $username, $email, $password) {
+            $sql = "UPDATE users SET roleId = :roleId, name = :name, surnames = :surnames, username = :username, email = :email, password = :password WHERE id = :userId";
             $query = $this->sql->prepare($sql);
-            $query->execute([":userId" => $userId, ":roleId" => $roleId, ":name" => $name, ":surname" => $surname, ":username" => $username, ":email" => $email, ":password" => $password, ":cardurl" => $cardurl,":mainportraitid" => $mainPortraitId]);
-
+            $query->execute([
+                ":userId" => $userId,
+                ":roleId" => $roleId,
+                ":name" => $name,
+                ":surnames" => $surnames,
+                ":username" => $username,
+                ":email" => $email,
+                ":password" => $password
+            ]);
         }
 
         public function getMainImage($userId) {
@@ -84,17 +91,31 @@
             return $query->fetchAll(\PDO::FETCH_COLUMN);
         }
 
-        public function portraitExsist($userId){
-            $sql = "SELECT * FROM portraitsusersimages WHERE userId = :userId";
+        public function emailExsist($email){
+            $sql = "SELECT * FROM users WHERE email = :email";
             $query = $this->sql->prepare($sql);
-            $query->execute([":userId" => $userId]);
-
+            $query->execute([":email" => $email]);
+            return $query->fetchAll();
         }
         
+        public function userNameExsist($username){
+            $sql = "SELECT * FROM users WHERE username = :username";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":username" => $username]);
+            return $query->fetchAll();
+        }
+
         public function deletePortraitImage($userId, $imageId){
             $sql = " DELETE FROM portraitsusersimages WHERE userId = :userId AND imageId = :imageId;";
             $query = $this->sql->prepare($sql);
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
 
+        }
+
+        public function getPassword($userId){
+            $sql = "SELECT password FROM users WHERE Id = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([":userId" => $userId]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
         }
     }
