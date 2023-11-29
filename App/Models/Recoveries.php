@@ -36,7 +36,6 @@
 
         public function generate($userId) {
             $token = hash("sha256", $userId . time() . rand(0, 1000000));
-            
             $sql = "INSERT INTO recoveries (userId, token, expiresAt) VALUES (:userId, :token, DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 1 HOUR))";
             $query = $this->sql->prepare($sql);
             $query->execute([

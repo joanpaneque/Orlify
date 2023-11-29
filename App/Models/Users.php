@@ -41,6 +41,12 @@
             $sql = "SELECT * FROM users";
             $query = $this->sql->prepare($sql);
             $query->execute();
-            return $query->fetchAll();
+
+            $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+            foreach ($result as &$row) {
+                unset($row['password']);
+            }
+
+            return $result;
         }
     }

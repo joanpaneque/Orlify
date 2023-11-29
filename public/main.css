@@ -529,6 +529,9 @@ video {
   white-space: nowrap;
   border-width: 0;
 }
+.fixed {
+  position: fixed;
+}
 .absolute {
   position: absolute;
 }
@@ -538,11 +541,20 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
+.left-0 {
+  left: 0px;
+}
 .right-0 {
   right: 0px;
 }
 .right-20 {
   right: 5rem;
+}
+.top-0 {
+  top: 0px;
+}
+.z-50 {
+  z-index: 50;
 }
 .col-span-3 {
   grid-column: span 3 / span 3;
@@ -566,6 +578,9 @@ video {
 .mr-2 {
   margin-right: 0.5rem;
 }
+.ms-auto {
+  margin-inline-start: auto;
+}
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -577,6 +592,9 @@ video {
 }
 .flex {
   display: flex;
+}
+.inline-flex {
+  display: inline-flex;
 }
 .table {
   display: table;
@@ -590,11 +608,20 @@ video {
 .h-12 {
   height: 3rem;
 }
+.h-3 {
+  height: 0.75rem;
+}
 .h-4 {
   height: 1rem;
 }
 .h-64 {
   height: 16rem;
+}
+.h-8 {
+  height: 2rem;
+}
+.h-\[calc\(100\%-1rem\)\] {
+  height: calc(100% - 1rem);
 }
 .h-full {
   height: 100%;
@@ -611,11 +638,20 @@ video {
 .w-12 {
   width: 3rem;
 }
+.w-3 {
+  width: 0.75rem;
+}
 .w-4 {
   width: 1rem;
 }
+.w-8 {
+  width: 2rem;
+}
 .w-full {
   width: 100%;
+}
+.max-w-2xl {
+  max-width: 42rem;
 }
 .max-w-3xl {
   max-width: 48rem;
@@ -646,11 +682,19 @@ video {
 .justify-center {
   justify-content: center;
 }
+.justify-between {
+  justify-content: space-between;
+}
 .gap-4 {
   gap: 1rem;
 }
 .gap-6 {
   gap: 1.5rem;
+}
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -665,6 +709,12 @@ video {
 .overflow-hidden {
   overflow: hidden;
 }
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
 .rounded {
   border-radius: 0.25rem;
 }
@@ -674,14 +724,32 @@ video {
 .rounded-md {
   border-radius: 0.375rem;
 }
+.rounded-b {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.rounded-t {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
 .border {
   border-width: 1px;
 }
 .border-2 {
   border-width: 2px;
 }
+.border-b {
+  border-bottom-width: 1px;
+}
+.border-t {
+  border-top-width: 1px;
+}
 .border-dashed {
   border-style: dashed;
+}
+.border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 .border-gray-300 {
   --tw-border-opacity: 1;
@@ -706,6 +774,13 @@ video {
 .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .object-cover {
   -o-object-fit: cover;
@@ -761,8 +836,19 @@ video {
   font-size: 1rem;
   line-height: 1.5rem;
 }
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
 .font-extrabold {
   font-weight: 800;
+}
+.font-semibold {
+  font-weight: 600;
 }
 .text-gray-400 {
   --tw-text-opacity: 1;
@@ -795,6 +881,11 @@ video {
 .placeholder-gray-500::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(107 114 128 / var(--tw-placeholder-opacity));
+}
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -926,6 +1017,13 @@ form {
     position: relative;
 }
 
+
+[type="hidden"] {
+    display: none;
+}
+
+
+
 .loginCheckbox:checked {}
 
 .loginCheckbox:checked::before {
@@ -939,8 +1037,101 @@ form {
     border-radius: 2px;
 }
 
+.primaryColor {
+    color: var(--primary);
+
+}
+
+.DataTableButton.red {
+    --color: var(--primary);
+}
+
+.DataTableButton.green {
+    --color: #23BB55;
+}
+
+.DataTableButton.black {
+    --color: #000;
+}
+
+.DataTableButton.opaque {
+    opacity: 1;
+}
+
+.DataTableButton {
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    opacity: 0.3;
+    color: var(--color);
+    border: 2px solid var(--color);
+}
+
+.DataTableButton:hover {
+    background: var(--color);
+    color: #fff;
+}
+
+tr:hover .DataTableButton {
+    opacity: 1;
+}
+
+label.white {
+    background: white !important;
+}
+
+.selectContainer {
+    background: white;
+    z-index: 100;
+    position: relative;
+}
+
+
+
+.selectOption {
+    padding: 10px;
+}
+
+.selectOption:not(:last-child) {
+    border-bottom: 1px solid #EEE;
+}
+
+.selectOption:hover {
+    background: #EEE;
+    cursor: pointer;
+}
+
+.selectOption[selected] {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.selectContainer {
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.1s ease-out;
+}
+
+.selectContainer.active {
+    max-height: 9999px;
+    border: 1px solid #AEAEAE;
+
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:text-gray-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -968,11 +1159,19 @@ form {
 
 @media (min-width: 768px) {
 
+  .md\:inset-0 {
+    inset: 0px;
+  }
+
   .md\:col-span-1 {
     grid-column: span 1 / span 1;
   }
 
   .md\:col-span-4 {
     grid-column: span 4 / span 4;
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
   }
 }
