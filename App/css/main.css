@@ -181,6 +181,13 @@ form {
     position: relative;
 }
 
+
+[type="hidden"] {
+    display: none;
+}
+
+
+
 .loginCheckbox:checked {}
 
 .loginCheckbox:checked::before {
@@ -192,4 +199,87 @@ form {
     bottom: 4px;
     background-color: #AEAEAE;
     border-radius: 2px;
+}
+
+.primaryColor {
+    color: var(--primary);
+
+}
+
+.DataTableButton.red {
+    --color: var(--primary);
+}
+
+.DataTableButton.green {
+    --color: #23BB55;
+}
+
+.DataTableButton.black {
+    --color: #000;
+}
+
+.DataTableButton.opaque {
+    opacity: 1;
+}
+
+.DataTableButton {
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    opacity: 0.3;
+    color: var(--color);
+    border: 2px solid var(--color);
+}
+
+.DataTableButton:hover {
+    background: var(--color);
+    color: #fff;
+}
+
+tr:hover .DataTableButton {
+    opacity: 1;
+}
+
+label.white {
+    background: white !important;
+}
+
+.selectContainer {
+    background: white;
+    z-index: 100;
+    position: relative;
+}
+
+
+
+.selectOption {
+    padding: 10px;
+}
+
+.selectOption:not(:last-child) {
+    border-bottom: 1px solid #EEE;
+}
+
+.selectOption:hover {
+    background: #EEE;
+    cursor: pointer;
+}
+
+.selectOption[selected] {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.selectContainer {
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.1s ease-out;
+}
+
+.selectContainer.active {
+    max-height: 9999px;
+    border: 1px solid #AEAEAE;
+
 }
