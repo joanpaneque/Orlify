@@ -71,42 +71,68 @@ class Passwords {
 
     public function meetsDirectives($password) {
         $upperCaseLetters = "ABCDEFGHIJKLMNOQPRSTUVWXYZ";
+        $nUpperCaseLetters = 0;
+
         $lowerCaseLetters = strtolower($upperCaseLetters);
+        $nLowerCaseLetters = 0;
+
         $numbers = "0123456789";
+        $nNumbers = 0;
+
         $symbols = "!@#$%^&*()_-=+{}[]";
-    
-        $letters = $upperCaseLetters . $lowerCaseLetters;
-    
-        if (strlen($password) < $this->minLength || strlen($password) > $this->maxLength) {
+        $nSymbols = 0;
+
+        $passwordLength = strlen($password);
+
+        if ($passwordLength < $this->minLength || $passwordLength > $this->maxLength) {
             return false;
         }
-    
-        $letras = preg_match_all('/[' . $letters . ']/', $password, $matches);
-        if ($letras < $this->minLetters) {
-            return false;
+
+        for ($i = 0; $i < $passwordLength; $i++) {
+            $char = $password[$i];
+
+            if (strpos($upperCaseLetters, $char) !== false) {
+                $nUpperCaseLetters++;
+            } else if (strpos($lowerCaseLetters, $char) !== false) {
+                $nLowerCaseLetters++;
+            } else if (strpos($numbers, $char) !== false) {
+                $nNumbers++;
+            } else if (strpos($symbols, $char) !== false) {
+                $nSymbols++;
+            }
         }
-    
-        $numeros = preg_match_all('/[' . $numbers . ']/', $password, $matches);
-        if ($numeros < $this->minNumbers) {
-            return false;
+
+        if ($nUpperCaseLetters < $this->minUppercase) {
+            return [
+                "error" => 1,
+                "message" => "La contrasenya ha de tenir almenys " . $this->minUppercase . " lletres majúscules"
+            ];
         }
-    
-        $simbolos = preg_match_all('/[' . preg_quote($symbols, '/') . ']/', $password, $matches);
-        if ($simbolos < $this->minSymbols) {
-            return false;
+
+        if ($nLowerCaseLetters < $this->minLowercase) {
+            return [
+                "error" => 1,
+                "message" => "La contrasenya ha de tenir almenys " . $this->minLowercase . " lletres minúscules"
+            ];
         }
-    
-        $mayusculas = preg_match_all('/[' . $upperCaseLetters . ']/', $password, $matches);
-        if ($mayusculas < $this->minLowercase) {
-            return false;
+
+        if ($nNumbers < $this->minNumbers) {
+            return [
+                "error" => 1,
+                "message" => "La contrasenya ha de tenir almenys " . $this->minNumbers . " números"
+            ];
         }
-    
-        $minusculas = preg_match_all('/[' . $lowerCaseLetters . ']/', $password, $matches);
-        if ($minusculas < $this->minUppercase) {
-            return false;
+
+        if ($nSymbols < $this->minSymbols) {
+            return [
+                "error" => 1,
+                "message" => "La contrasenya ha de tenir almenys " . $this->minSymbols . " símbols"
+            ];
         }
-    
-        return true;
-    }    
-    
-    }
+        
+        return [
+            "error" => 0,
+            "message" => "La contrasenya cumpleix amb els requisits"
+        ];
+    }        
+}

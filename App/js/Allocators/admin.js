@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'datatables.net';
 import 'flowbite';
+
 import inputBlock from './inputBlock.js';
 import inputSelect from './inputSelect.js';
 
@@ -44,7 +45,7 @@ export default async function admin() {
         formTitle.html(`Editant l'usuari <span class="primaryColor">${data["username"]}</span>`);
         formBody.empty();
         formBody.html(`
-            <form action="/admin/updateUser" method="GET" autocomplete="off">
+            <form action="/admin/updateUser" method="POST" autocomplete="off">
                 <input type="hidden" name="userId" value="${data["id"]}">
                 <div class="inputBlock">
                     <label for="email" class="white">Nom d'usuari</label>
@@ -65,7 +66,7 @@ export default async function admin() {
                 </div>                
                 <div class="inputBlock">
                     <label for="surnames" class="white">Cognoms</label>
-                    <input type="text" name="surname" class="inputField" value="${data["surnames"]}" required>
+                    <input type="text" name="surnames" class="inputField" value="${data["surnames"]}" required>
                 </div>
                 <div class="inputBlock">
                     <label for="email" class="white">Correu electrònic</label>

@@ -48,7 +48,11 @@
                     <td><?= $roles[array_search($user["roleId"], array_column($roles, 'id'))]["name"]?></td>
                     <td>
                         <button id="edit" data-modal-target="editModal" data-modal-toggle="editModal" class="DataTableButton green">Editar</button>
-                        <button class="DataTableButton red">Eliminar</button>
+                        
+                        <form method="POST" action="/admin/deleteUser" style="display: inline-block">
+                            <input type="hidden" name="userId" value="<?=$user["id"]?>">
+                            <button class="DataTableButton red">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <?php } ?>

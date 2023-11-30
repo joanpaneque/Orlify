@@ -115,22 +115,37 @@
             $sql = " DELETE FROM portraitsusersimages WHERE userId = :userId AND imageId = :imageId;";
             $query = $this->sql->prepare($sql);
             $query->execute([":userId" => $userId, ":imageId" => $imageId]);
-
         }
         
-        public function deleteUser($userId){
-            $sql = " DELETE FROM users where id = :userId";
+        public function deleteUser($userId) {
+            $sql = "DELETE FROM users where id = :userId";
             $query = $this->sql->prepare($sql);
             $result = $query->execute([":userId" => $userId]);
             $rowCount = $query->rowCount();
             return ($rowCount > 0);
         }
 
-        public function getPassword($userId){
+        public function getPassword($userId) {
             $sql = "SELECT password FROM users WHERE Id = :userId";
             $query = $this->sql->prepare($sql);
             $query->execute([":userId" => $userId]);
             return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
+        }
+
+        public function updateUser($userId, $roleId, $name, $surnames, $username, $email, $password) {
+            $sql = "UPDATE users SET roleId = :roleId, name = :name, surnames = :surnames, username = :username, email = :email, password = :password WHERE id = :userId";
+            $query = $this->sql->prepare($sql);
+            $result = $query->execute([
+                ":roleId" => $roleId,
+                ":name" => $name,
+                ":surnames" => $surnames,
+                ":username" => $username,
+                ":email" => $email,
+                ":password" => $password,
+                ":userId" => $userId
+            ]);
+            $rowCount = $query->rowCount();
+            return ($rowCount > 0);
         }
     }
 
