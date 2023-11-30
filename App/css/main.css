@@ -82,7 +82,7 @@ body {
     height: 53px;
     width: 162px;
     border-radius: 300px;
-    border: 2px solid white; /* Añade un borde blanco */
+    border: 2px solid white; 
     font-size: 16px;
     font-weight: bold;
     display: flex;
@@ -181,7 +181,6 @@ form {
     position: relative;
 }
 
-.loginCheckbox:checked {}
 
 .loginCheckbox:checked::before {
     content: "";
@@ -190,6 +189,69 @@ form {
     left: 4px;
     right: 3px;
     bottom: 4px;
-    background-color: #AEAEAE;
     border-radius: 2px;
+}
+
+.reportsTable {
+    border-radius: 10px;
+    overflow: hidden;
+    border: none !important;
+}
+
+.reportsTable thead {
+    border: none;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.reportsTable tbody {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.reportsTable tr {
+    background: none !important;
+}
+    
+
+.reportsTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.reportsTable th,
+.reportsTable td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.reportsTable th {
+    background: var(--primary);
+
+    color: white;
+}
+
+.reportsTable tbody tr:hover {
+    background-color: var(--background);
+}
+
+.toggleReportsCheckbox {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+.toggleReportsCheckbox:checked {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.primary {
+    background: var(--primary);
+    color: white;
 }

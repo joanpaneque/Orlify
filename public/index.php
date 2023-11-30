@@ -11,6 +11,7 @@ use \App\Controllers\Users;
 use \App\Controllers\Register;
 use \App\Controllers\Portrait;
 use \App\Controllers\DeleteUser;
+use \App\Controllers\Reports;
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 include "../vendor/autoload.php";
@@ -26,6 +27,7 @@ $app->get("/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/delete", [DeleteUser::Class,"delete"]);
 $app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
+$app->post("/ajax/Reports/marked", [Reports::class, "toggleReports"]);
 
 
 $app->get("/recover", [Recover::class, "index"]);
@@ -40,6 +42,8 @@ $app->post("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
 
 $app->get("/admin", [Admin::class, "index"]);
+$app->get("/reports", [Reports::class, "index"]);
+$app->post("/reports/toggleReports", [Reports::class, "toggleReports"]);
 
 
 $app->get("/index", function ($request, $response) {

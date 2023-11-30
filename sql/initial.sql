@@ -55,6 +55,7 @@ CREATE TABLE recoveries (
 CREATE TABLE reports (
     id INT AUTO_INCREMENT,
     userId INT NOT NULL,
+    marked TINYINT(1) NOT NULL DEFAULT 0,
     description VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (userId) REFERENCES users(id)

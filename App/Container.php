@@ -23,6 +23,10 @@ class Container extends EmesetContainer {
         $this["\App\Models\Users"] = function($container) {
             return new \App\Models\Users($container["\App\Models\Database"]->getConnection());
         };
+        
+        $this["\App\Models\Reports"] = function($container) {
+            return new \App\Models\Reports($container["\App\Models\Database"]->getConnection());
+        };
 
         $this["\App\Helpers\Passwords"] = function($container) {
             return new \App\Helpers\Passwords(
