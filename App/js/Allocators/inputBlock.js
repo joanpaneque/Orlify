@@ -1,6 +1,8 @@
 export default function inputBlock() {
     const inputBlocks = document.querySelectorAll('.inputBlock');
 
+    if (inputBlocks.length === 0) return;
+
     let focused = false;
 
     inputBlocks.forEach(inputBlock => {
@@ -16,6 +18,10 @@ export default function inputBlock() {
                 label.classList.remove('active');
             }
         });
+
+        if (input.value !== '') {
+            label.classList.add('active');
+        }
 
         if (input.value === "" && !focused) {
             input.focus();

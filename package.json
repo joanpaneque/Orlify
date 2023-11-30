@@ -35,6 +35,9 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "datatables.net": "^1.13.8"
+    "datatables.net": "^1.13.8",
+    "datatables.net-dt": "^1.13.8",
+    "flowbite": "^2.2.0",
+    "jquery-ui": "^1.13.2"
   }
 }
