@@ -24,14 +24,11 @@ $app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
-<<<<<<< HEAD
 $app->get("/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/delete", [DeleteUser::Class,"delete"]);
 $app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
 $app->post("/ajax/Reports/marked", [Reports::class, "toggleReports"]);
-=======
->>>>>>> feature-admin-view-backendconnection
 
 $app->get("/activated", [Portrait::class, "togglePortrait"]);
 
