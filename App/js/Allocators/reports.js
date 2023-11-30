@@ -3,7 +3,11 @@ import 'datatables.net';
 
 export default function reports() {
 
-    $(document).ready(function () {
+    console.log("aaa")
+
+    $('#tables').DataTable();
+
+
         $('.toggleReportsCheckbox').change(function () {
             var checkbox = $(this);
             var reportId = checkbox.data('report-id');
@@ -25,7 +29,5 @@ export default function reports() {
             });
         });
 
-        $('#tables').DataTable();
-    })
 
 }

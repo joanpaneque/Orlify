@@ -186,10 +186,6 @@ form {
     display: none;
 }
 
-
-
-.loginCheckbox:checked {}
-
 .loginCheckbox:checked::before {
     content: "";
     position: absolute;
@@ -262,6 +258,8 @@ form {
 .primary {
     background: var(--primary);
     color: white;
+}
+
 .primaryColor {
     color: var(--primary);
 
@@ -312,8 +310,6 @@ label.white {
     position: relative;
 }
 
-
-
 .selectOption {
     padding: 10px;
 }
@@ -343,5 +339,4 @@ label.white {
     max-height: 9999px;
     border: 1px solid #AEAEAE;
 
-}
 }
