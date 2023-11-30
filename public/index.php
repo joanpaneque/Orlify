@@ -20,15 +20,23 @@ $container = new \App\Container(__DIR__ . "/../App/config.php");
 $app = new \Emeset\Emeset($container);
 
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
+$app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
+<<<<<<< HEAD
 $app->get("/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/delete", [DeleteUser::Class,"delete"]);
 $app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
 $app->post("/ajax/Reports/marked", [Reports::class, "toggleReports"]);
+=======
+>>>>>>> feature-admin-view-backendconnection
 
+$app->get("/activated", [Portrait::class, "togglePortrait"]);
+
+$app->post("/admin/updateUser", [Admin::class, "updateUser"]);
+$app->post("/admin/deleteUser", [Admin::class, "deleteUser"]);
 
 $app->get("/recover", [Recover::class, "index"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);

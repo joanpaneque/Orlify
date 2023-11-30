@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/main.css">
     <script src="/js/bundle.js"></script>
     <meta allocation="inputBlock">
-   
-
     <title>Document</title>
 </head>
-
 <body class="bg-gray-100">
   <div class=" flex flex-row items-center justify-center text-center relative">
   <a href="/login"><p class="absolute top-0 left-0 font-bold">Orlify</p></a>
@@ -19,13 +16,13 @@
         Registrar-se
       </h1>
       <div class="titleBottomBar"></div> 
-      <form action="/recover/sendMail" method="POST" class="mt-6 flex-grow hhh">
+      <form action="/recover/sendMail" method="POST" class="mt-6 flex-grow">
         <div class="inputBlock">
           <label for="nom">Nom</label>
           <input type="text" name="nom" class="inputField" required>
         </div>
         <div class="inputBlock">
-          <label for="cognnom">Cognoms</label>
+          <label for="cognom">Cognoms</label>
           <input type="text" name="cognom" class="inputField" required>
         </div>
         <div class="inputBlock">

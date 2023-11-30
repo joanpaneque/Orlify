@@ -4,10 +4,8 @@ namespace App\Controllers;
 
 class Users {
     public function index($request, $response, $container){
-
-        $response->SetTemplate("groups.php");
-
-        return $response;        
+        $response->setTemplate("groups.php");
+        return $response;
     }
 
     public function setMainImage($request, $response, $container){
@@ -16,9 +14,9 @@ class Users {
         $userId = $request->get('SESSION', 'userId');
 
         $users = $container->get("\App\Models\Users");
-        $checkImage = $users->imageBelongsTo($userId, $imageId);
+        $imageBelongsToUser = $users->imageBelongsTo($userId, $imageId);
 
-        if(!$checkImage){
+        if(!$imageBelongsToUser) {
             $response->set("error", 1);
             $response->set("message", "La imatge no pertany a l'usuari");
             return $response;
