@@ -2,15 +2,36 @@
 
 namespace App\Controllers;
 
+/**
+ * Class Portrait
+ *
+ * This class manages operations related to portraits.
+ */
 class Portrait {
 
+    /**
+     * Display the index page for portraits.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function index($request, $response, $container) {
 
-        $response->SetTemplate("groups.php");
+        $response->syyyetTemplate("groups.php");
 
         return $response;        
     }
 
+    /**
+     * Toggle portrait for a group.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function togglePortrait($request, $response, $container) {
         $groupId = $request->get(INPUT_POST, 'groupId');
         
@@ -28,12 +49,13 @@ class Portrait {
             $response->set("message", "Aquest grup no te orla");
             return $response;
         }
+
+        // Toggle the portrait activation
         $portraits->togglePortrait($groupId);
         $isActivated = $portraits->isActivated($groupId);
 
         $response->set("error", 0);
         $response->set("message", "Orla " . ($isActivated ? 'activada' : 'desactivada') . " correctament");
         return $response;
-
     }
 }

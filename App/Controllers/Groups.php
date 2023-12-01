@@ -2,7 +2,20 @@
 
 namespace App\Controllers;
 
+/**
+ * Class Groups
+ *
+ * This class manages operations related to groups.
+ */
 class Groups {
+    /**
+     * Display the index page for groups.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function index($request, $response, $container){
 
         $response->SetTemplate("groups.php");
@@ -10,7 +23,14 @@ class Groups {
         return $response;        
     }
 
-
+    /**
+     * Create a portrait for a group.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function createPortrait($request, $response, $container) {
         $groupId = $request->get(INPUT_POST, "groupId");
 
@@ -37,6 +57,14 @@ class Groups {
         return $response;
     }
 
+    /**
+     * Get members of a group.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function getMembers($request, $response, $container) {
 
         $groupId = $request->get(INPUT_GET, 'groupId');
