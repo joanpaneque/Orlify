@@ -46,4 +46,32 @@
             ]);
             return $query->fetchAll(\PDO::FETCH_COLUMN);
         }
+
+        public function uploadImg($image){
+            $sql = "INSERT INTO images (url) values (:image)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":image" => $image
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
+
+        public function getUploadImg($image){
+            $sql = "select * from images where url = :image";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":image" => $image
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
+
+        public function userImage($imageId,$userId){
+            $sql = "INSERT INTO portraitsusersimages values (:userId, :imagesId)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":imagesid" => $imageId,
+                ":userId" => $userId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
     }

@@ -32,8 +32,12 @@ $app->post("/ajax/Reports/marked", [Reports::class, "toggleReports"]);
 
 $app->get("/recover", [Recover::class, "index"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
+
+$app->post("/register/register", [Register::class, "register"]);
+
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 $app->get("/groups", [Groups::class, "index"]);
+$app->post("/groups/uploadImagesMember", [Groups::class, "uploadImagesMember"]);
 
 $app->post("/login", [Login::class, "login"]);
 $app->get("/login", [Login::class, "index"]);

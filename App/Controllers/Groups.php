@@ -5,7 +5,7 @@ namespace App\Controllers;
 class Groups {
     public function index($request, $response, $container){
 
-        $response->SetTemplate("groups.php");
+        $response->SetTemplate("testingimg.php");
 
         return $response;        
     }
@@ -13,6 +13,7 @@ class Groups {
 
     public function createPortrait($request, $response, $container) {
         $groupId = $request->get(INPUT_POST, "groupId");
+        
 
         $portraits = $container->get("\App\Models\Portraits");
         $groups = $container->get("\App\Models\Groups");
@@ -41,7 +42,6 @@ class Groups {
 
         $groupId = $request->get(INPUT_GET, 'groupId');
 
-        // Models
         $users = $container->get("\App\Models\Users");
         $groups = $container->get("\App\Models\Groups");
 
@@ -61,4 +61,37 @@ class Groups {
 
         return $response;
     } 
+
+    public function uploadImagesMember($request, $response, $container) {
+        $r = $request->get("FILES", "images");
+        $userId = $request->get('SESSION', 'userId');      
+        $groups = $container->get("\App\Models\Groups");
+
+    
+        foreach($r as $image){
+            var_dump($image);
+            $uploadImg = $groups->uploadImg($image);
+
+            if (!$uploadImg){
+                $response->set("error", 1);
+                $response->set("message", "imatge no inserida");
+                return $response;
+            }
+
+            $imageId = $groups->getUploadImg($image);
+
+            $userImage = $groups->userImage($imageId,$userId);
+
+            if (!$userImage){
+                $response->set("error", 1);
+                $response->set("message", "imatge no inserida");
+                return $response;
+            }
+        }
+
+        $response->set("error", 0);
+        $response->set("message", "S'han pogut registrar les imatges correctament");
+        return $response;
+    }
 }
+

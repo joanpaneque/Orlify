@@ -6,7 +6,7 @@ class Portrait {
 
     public function index($request, $response, $container) {
 
-        $response->SetTemplate("groups.php");
+        $response->SetTemplate("portrait.php");
 
         return $response;        
     }
