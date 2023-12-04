@@ -144,5 +144,14 @@
             $query->execute([":userId" => $userId]);
             return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
         }
+
+        public function addImage($userId, $imageId) {
+            $sql = "INSERT INTO portraitsusersimages VALUES (:userId, :imageId)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":userId" => $userId,
+                ":imageId" => $imageId
+            ]);
+        }
     }
 

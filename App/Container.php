@@ -28,6 +28,10 @@ class Container extends EmesetContainer {
             return new \App\Models\Reports($container["\App\Models\Database"]->getConnection());
         };
 
+        $this["\App\Models\Images"] = function($container) {
+            return new \App\Models\Images($container["\App\Models\Database"]->getConnection());
+        };
+
         $this["\App\Helpers\Passwords"] = function($container) {
             return new \App\Helpers\Passwords(
                 $container["config"]["passwordPolicy"]["minLength"],
