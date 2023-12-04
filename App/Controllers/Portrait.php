@@ -19,7 +19,7 @@ class Portrait {
      */
     public function index($request, $response, $container) {
 
-        $response->syyyetTemplate("groups.php");
+        $response->SetTemplate("portrait.php");
 
         return $response;        
     }

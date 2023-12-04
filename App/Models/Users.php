@@ -121,6 +121,18 @@
                 ":password" => $password
             ]);
         }
+
+        public function createUser($name, $surnames, $username, $email, $password) {
+            $sql = "INSERT INTO users (roleId,name, surnames, username, email, password) VALUES (1,:name, :surnames, :username, :email, :password)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":name" => $name,
+                ":surnames" => $surnames,
+                ":username" => $username,
+                ":email" => $email,
+                ":password" => $password
+            ]);
+        }
         
         /**
          * Get the main portrait image ID for a user.
@@ -209,6 +221,16 @@
             $query->execute([":userId" => $userId]);
             return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
         }
+
+        public function addImage($userId, $imageId) {
+            $sql = "INSERT INTO portraitsusersimages VALUES (:userId, :imageId)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":userId" => $userId,
+                ":imageId" => $imageId
+            ]);
+        }
+    
 
         /**
          * Update user details.

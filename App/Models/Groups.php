@@ -65,18 +65,41 @@ class Groups {
         return $query->fetchAll(\PDO::FETCH_COLUMN);
     }
 
-    /**
-     * Retrieves teachers belonging to a specific group.
-     *
-     * @param int $groupId Group ID to fetch teachers.
-     * @return array Returns an array of teacher user IDs.
-     */
-    public function getTeachers($groupId) {
-        $sql = "SELECT userId FROM teachersusersgroups WHERE groupId = :groupId";
-        $query = $this->sql->prepare($sql);
-        $query->execute([
-            ":groupId" => $groupId
-        ]);
-        return $query->fetchAll(\PDO::FETCH_COLUMN);
+
+        public function getTeachers($groupId) {
+            $sql = "SELECT userId FROM teachersusersgroups WHERE groupId = :groupId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":groupId" => $groupId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
+
+        public function uploadImg($image){
+            $sql = "INSERT INTO images (url) values (:image)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":image" => $image
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
+
+        public function getUploadImg($image){
+            $sql = "select * from images where url = :image";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":image" => $image
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
+
+        public function userImage($imageId,$userId){
+            $sql = "INSERT INTO portraitsusersimages values (:userId, :imagesId)";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":imagesid" => $imageId,
+                ":userId" => $userId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
     }
-}
