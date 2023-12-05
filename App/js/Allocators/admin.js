@@ -84,7 +84,6 @@ export default async function admin() {
                 <button type="submit" id="editModal__submitForm" class="hidden">Actualitzar</button>
             </form>
         `);
-
         inputBlock();
         inputSelect();
         $("#editModal__update").on("click", e => {
