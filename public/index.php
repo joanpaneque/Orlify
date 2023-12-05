@@ -35,7 +35,7 @@ $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
 $app->get("/activated", [Portrait::class, "togglePortrait"]); // Conflicting route definition
-$app->get("/delete", [DeleteUser::Class, "delete"]);
+$app->get("/admin/delete", [Admin::Class, "deleteUser"]);
 $app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]); // Conflicting route definition
 $app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
 $app->get("/admin/updateUser", [Admin::class, "updateUser"]); // Conflicting route definition

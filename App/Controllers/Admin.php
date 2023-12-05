@@ -132,10 +132,10 @@ class Admin {
 
     public function deleteUser($request, $response, $container) {
         $users = $container->get("\App\Models\Users");
-        $userId = $request->get(INPUT_POST, 'userId');
+        $userId = $request->get(INPUT_GET, 'userId');
         $users->deleteUser($userId);
+        $response->set("message", " ");
         $response->set("error", 0);
-        $response->set("message", "Usuari eliminat correctament");
 
         $response->redirect("Location: /admin");
         return $response;
