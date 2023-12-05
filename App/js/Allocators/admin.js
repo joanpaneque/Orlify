@@ -33,8 +33,8 @@ export default async function admin() {
         }
     });
 
-    const formTitle = $("#editModal__title");
-    const formBody = $("#editModal__body");
+    const editUserFormTitle = $("#editModal__title");
+    const editUserFormBody = $("#editModal__body");
 
     $("[userId] #edit").on("click", e => {
         const userRow = $(e.currentTarget).closest("[userId]");
@@ -42,9 +42,9 @@ export default async function admin() {
         const roles = JSON.parse($("#adminTable").attr("data-roles"));
         console.log(roles);
 
-        formTitle.html(`Editant l'usuari <span class="primaryColor">${data["username"]}</span>`);
-        formBody.empty();
-        formBody.html(`
+        editUserFormTitle.html(`Editant l'usuari <span class="primaryColor">${data["username"]}</span>`);
+        editUserFormBody.empty();
+        editUserFormBody.html(`
             <form action="/admin/updateUser" method="POST" autocomplete="off">
                 <input type="hidden" name="userId" value="${data["id"]}">
                 <div class="inputBlock">
@@ -91,5 +91,14 @@ export default async function admin() {
             e.preventDefault();
             $("#editModal__submitForm").click();
         });
+    });
+
+    // $("#addModal").on("click", e => {
+    //     e.preventDefault();
+    // });
+
+    $("#addModal__create").on("click", e => {
+        e.preventDefault();
+        $("#addModal__submit").click();
     });
 }

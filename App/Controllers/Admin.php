@@ -74,23 +74,13 @@ class Admin {
     public function createUser($request, $response, $container) {
         $users = $container->get("\App\Models\Users");
         $roles = $container->get("\App\Models\Roles");
-        $passwords = $container->get("\App\Helpers\Passwords");
+        $passwords = $container->get("\App\Helpers\Passwords"); 
 
-        $roleId = 1;
         $name = $request->get(INPUT_POST, 'name');
         $surnames = $request->get(INPUT_POST, 'surnames');
         $username = $request->get(INPUT_POST, 'username');
         $email = $request->get(INPUT_POST, 'email');
-        $password = $request->get(INPUT_POST, 'password');
-
-
-        $roleExist = $roles->exist($roleId);
-        if (!$roleExist) {
-            $response->set("error", 1);
-            $response->set("message", "El rol no existe con la base de datos");
-            return $response;
-        }
-        
+        $password = $request->get(INPUT_POST, 'password');        
 
         $userNamelExist = $users->userNameExsist($username);        
         if ($userNamelExist) {
@@ -98,13 +88,13 @@ class Admin {
             $response->set("message", "El username ya existeix");
             return $response;
         }
-
         
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $response->set("error", 1);
             $response->set("message", "El email no corresponde con los requisitos");
             return $response;
-        } 
+        }
+
         $emailExist = $users->emailExsist($email);
         if ($emailExist) {
             $response->set("error", 1);
@@ -119,10 +109,8 @@ class Admin {
             return $response;
         }
         $password = $passwords->hash($password);
-        
 
-        $users->createUsers($roleId, $name, $surnames, $username, $email, $password);
-
+        $users->createUser($name, $surnames, $username, $email, $password);
         
         $response->set("error", 0);
         $response->set("message", "Datos Insertados correctamente");

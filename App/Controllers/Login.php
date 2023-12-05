@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 class Login {
-
     public function index($request, $response, $container) {
         $email = $request->get(INPUT_GET, "email");
         $response->set("email", $email);

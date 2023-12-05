@@ -236,4 +236,18 @@
             $rowCount = $query->rowCount();
             return ($rowCount > 0);
         }
+
+        public function createUser($name, $surnames, $username, $email, $password) {
+            $sql = "INSERT INTO users (roleId, name, surnames, username, email, password) VALUES (1, :name, :surnames, :username, :email, :password)";
+            $query = $this->sql->prepare($sql);
+            $result = $query->execute([
+                ":name" => $name,
+                ":surnames" => $surnames,
+                ":username" => $username,
+                ":email" => $email,
+                ":password" => $password
+            ]);
+            $rowCount = $query->rowCount();
+            return ($rowCount > 0);
+        }
     }

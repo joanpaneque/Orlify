@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="/main.css">
     <script src="/js/bundle.js"></script>
     <meta allocation="admin">
+    <meta allocation="inputBlock">
     <title>Administració</title>
 </head>
 <body>
+
+
+<!-- Edit modal -->
 <div id="editModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <div class="relative bg-white rounded-lg shadow">
@@ -32,7 +36,67 @@
         </div>
     </div>
 </div>
-    <table class="display" id="adminTable" data-roles='<?=json_encode($roles)?>'>
+
+<!-- Add modal -->
+<div id="addModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <div class="relative bg-white rounded-lg shadow">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                <h3 class="text-xl font-semibold text-gray-900" id="addModal__title">
+                    Creació d'usuari
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="addModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4 md:p-5 space-y-4" id="addModal__body">
+                <form autocomplete="off" action="/admin/createuser" method="POST">
+                    <div class="inputBlock">
+                        <label for="name" class="white">Nom</label>
+                        <input type="text" name="name" class="inputField" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="surnames" class="white">Cognoms</label>
+                        <input type="text" name="surnames" class="inputField" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="username" class="white">Nom d'usuari</label>
+                        <input type="text" name="username" class="inputField" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="email" class="white">Email</label>
+                        <input type="email" name="email" class="inputField" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="password" class="white">Contrasenya</label>
+                        <input type="password" name="password" class="inputField" required>
+                    </div>
+                    <div class="inputBlock">
+                        <label for="repeatPassword" class="white">Repetir contrasenya</label>
+                        <input type="password" name="repeatPassword" class="inputField" required>
+                    </div>
+                    <button type="hidden" id="addModal__submit">Submit</button>           
+                </form>
+            </div>
+            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b">
+                <button id="addModal__create" data-modal-hide="addModal" type="button" class="DataTableButton red opaque mr-2">Crear usuari</button>
+                <button data-modal-hide="addModal" type="button" class="DataTableButton black opaque">Cancel·lar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="tableOptions">
+    <button class="roundedRedButton m-0" data-modal-target="addModal" data-modal-toggle="addModal">Afegir usuari</button>
+    <button class="roundedRedButton m-0">Importar CSV</button>
+</div>
+
+
+    <table id="adminTable" data-roles='<?=json_encode($roles)?>' class="display">
         <thead>
             <tr>
                 <th>Nom d'usuari</th>
@@ -58,7 +122,6 @@
             <?php } ?>
         </tbody>
     </table>
-    <script>
-    </script>
+</div>
 </body>
 </html>

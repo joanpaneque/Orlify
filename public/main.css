@@ -565,6 +565,9 @@ video {
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
+.m-0 {
+  margin: 0px;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -969,6 +972,7 @@ body {
     border-radius: 5px;
     margin: 0 auto;
 }
+
 .titleBottomBar2 {
     height: 5px;
     width: 75px;
@@ -985,6 +989,7 @@ body {
     text-align: center;
     color: var(--primary)
 }
+
 .titlered {
     font-size: 48px;
     font-weight: 800;
@@ -993,8 +998,9 @@ body {
     text-align: center;
     color: var(--primary);
     margin-top: 2.5rem;
-    
+
 }
+
 .title2 {
     font-size: 48px;
     font-weight: 800;
@@ -1023,13 +1029,14 @@ body {
     justify-content: center;
     margin: 0 auto;
 }
+
 .roundedWhiteButton {
     background: transparent;
     color: #fff;
     height: 53px;
     width: 162px;
     border-radius: 300px;
-    border: 2px solid white; 
+    border: 2px solid white;
     font-size: 16px;
     font-weight: bold;
     display: flex;
@@ -1163,7 +1170,7 @@ form {
 .reportsTable tr {
     background: none !important;
 }
-    
+
 
 .reportsTable {
     border-collapse: collapse;
@@ -1288,6 +1295,22 @@ label.white {
     max-height: 9999px;
     border: 1px solid #AEAEAE;
 
+}
+
+
+.tableOptions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.container {
+    margin: 20px
 }
 
 .hover\:cursor-pointer:hover {

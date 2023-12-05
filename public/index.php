@@ -3,6 +3,8 @@
  * This file sets up routes and controllers for a web application.
  */
 
+ namespace App;
+
 use \Emeset\Contracts\Routers\Router;
 use \App\Controllers\Groups;
 use \App\Controllers\Recover;
@@ -34,14 +36,15 @@ $app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
-$app->get("/activated", [Portrait::class, "togglePortrait"]); // Conflicting route definition
 $app->get("/delete", [DeleteUser::Class, "delete"]);
-$app->get("/ajax/Portrait/activated", [Portrait::class, "togglePortrait"]); // Conflicting route definition
-$app->get("/ajax/Admin/password", [Admin::class, "updateUser"]);
-$app->get("/admin/updateUser", [Admin::class, "updateUser"]); // Conflicting route definition
+$app->get("/ajax/portrait/toggle", [Portrait::class, "togglePortrait"]);
+$app->get("/admin/updateUser", [Admin::class, "updateUser"]);
+$app->post("/admin/createuser", [Admin::class, "createUser"]);
+
 $app->get("/recover", [Recover::class, "index"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 $app->get("/groups", [Groups::class, "index"]);
+
 
 $app->get("/login", [Login::class, "index"]);
 $app->post("/login", [Login::class, "login"]);
