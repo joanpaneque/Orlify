@@ -32,7 +32,7 @@ class Groups {
 
         $response->set("images", $urls);
 
-        $response->SetTemplate("testingimg.php");
+        $response->SetTemplate("groups.php");
 
         return $response;        
     }
@@ -118,6 +118,9 @@ class Groups {
 
 
         foreach($imgs as $image) {
+            if (!$image) {
+                continue;
+            }
 
             $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
             $tokenizedFile = hash("sha256", $extension .  $userId . rand(0, 10000)) . $extension;
