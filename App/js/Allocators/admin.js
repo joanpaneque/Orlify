@@ -93,7 +93,6 @@ export default async function admin() {
         });
     });
 
-
     $("#addModal__create").on("click", e => {
         e.preventDefault();
         $("#addModal__submit").click();
