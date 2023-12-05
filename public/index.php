@@ -30,6 +30,8 @@ $app = new \Emeset\Emeset($container);
  * Define routes and their corresponding controller methods.
  */
 
+ // hola
+
 // GET routes
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
