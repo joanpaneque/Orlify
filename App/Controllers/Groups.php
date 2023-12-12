@@ -2,8 +2,22 @@
 
 namespace App\Controllers;
 
+/**
+ * Class Groups
+ *
+ * This class manages operations related to groups.
+ */
 class Groups {
-    public function index($request, $response, $container) {
+    /**
+     * Display the index page for groups.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
+    public function index($request, $response, $container){
+    
 
         // $users = $container->get("\App\Models\Users");
         // $images = $container->get("\App\Models\Images");
@@ -18,12 +32,19 @@ class Groups {
 
         // $response->set("images", $urls);
 
-        $response->SetTemplate("testingimg.php");
+        $response->SetTemplate("groups.php");
 
         return $response;        
     }
 
-
+    /**
+     * Create a portrait for a group.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function createPortrait($request, $response, $container) {
         $groupId = $request->get(INPUT_POST, "groupId");
         
@@ -51,6 +72,14 @@ class Groups {
         return $response;
     }
 
+    /**
+     * Get members of a group.
+     *
+     * @param mixed $request The HTTP request data.
+     * @param mixed $response The HTTP response data.
+     * @param mixed $container The container for dependencies.
+     * @return mixed Returns the response.
+     */
     public function getMembers($request, $response, $container) {
 
         $groupId = $request->get(INPUT_GET, 'groupId');
@@ -90,6 +119,10 @@ class Groups {
         $imageUrls = [];
     
         foreach($imgs as $image) {
+            if (!$image) {
+                continue;
+            }
+
             $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
             $tokenizedFile = hash("sha256", $extension .  $userId . rand(0, 10000)) . $extension;
             $url = "userData/" . $tokenizedFile;

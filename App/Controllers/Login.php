@@ -41,7 +41,6 @@ class Login {
         $response->setSession("userId", $userId);
         $response->setSession("logged", true);
 
-
         $response->redirect("Location: /index");
         return $response;
     }

@@ -19,6 +19,7 @@ export default function images() {
             formData.append('image2', image2);
             formData.append('image3', image3);
     
+
             $.ajax({
                 url: "/groups/uploadImagesMember",
                 type: "POST",

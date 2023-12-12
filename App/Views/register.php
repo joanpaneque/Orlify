@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="/main.css">
     <script src="/js/bundle.js"></script>
     <meta allocation="inputBlock">
-   
-
     <title>Document</title>
 </head>
-
 <body class="bg-gray-100">
   <div class=" flex flex-row items-center justify-center text-center relative">
   <a href="/login"><p class="absolute top-0 left-0 font-bold">Orlify</p></a>

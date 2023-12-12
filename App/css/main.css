@@ -122,9 +122,11 @@ body {
 }
 
 .hhh {
-    width: 400px;
-    margin: 0 auto;
+    width: 300px;
+    margin: auto;
+    
 }
+
 
 
 .inputBlock label.active {
@@ -340,3 +342,17 @@ label.white {
     border: 1px solid #AEAEAE;
 
 }
+/* Estilos generales para el select2 */
+.searchable-select {
+    /* Estilos comunes para el select2 aquí */
+}
+
+/* Estilos específicos para pantallas pequeñas */
+@media screen and (max-width: 767px) {
+    .searchable-select {
+        width: 10%; /* Establece el ancho al 90% solo en pantallas pequeñas */
+        margin: 5px; /* Ajusta el valor según tus necesidades */
+    }
+}
+
+
