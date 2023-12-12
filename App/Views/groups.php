@@ -4,16 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-xrA5zzZDXUeKdZRZzdD2pmjPglwZb6TjxEyt7gdxvBnjX6U9bRQcCzVT4+P++hOgfzPo0Upj9mKD+L3vPR1NzRw=="
-        crossorigin="anonymous" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-    <script src="/js/bundle.js"></script>
-    <meta allocation="images">
+    <meta allocation="groups">
     <title>Orlify</title>
+    <script src="/js/bundle.js"></script>
+    <link rel="stylesheet" href="/main.css">
 </head>
 
 <body class="bg-gray-100">
@@ -32,38 +26,30 @@
 
 
 
-    <form class="mt-8 space-y-6" action="" method="POST" enctype="multipart/form-data">
+    <form class="mt-8 space-y-6" action="/groups/getMembers" method="POST" enctype="multipart/form-data">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="flex items-center justify-center">
-                <select id="classSelect"
-                    class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2">
-                    <option value="">Selecciona una clase</option>
-                    <option value="clase1">Clase 1</option>
-                    <option value="clase2">Clase 2</option>
-                    <option value="miembro2">Miembro 2</option>
-                    <option value="profesor">Profesor</option>
+                <select id="classSelect" class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2">
+                    <option value="">Selecciona una clases</option>
+                    <?php  foreach ($users as $group): ?>
+                        <option value="<?= $group["Id"] ?>"><?php echo $group["name"] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
+
             <div class="flex items-center justify-center md:mt-0">
-                <select id="memberSelect"
-                    class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2">
-                    <option value="">Selecciona un integrante</option>
-                    <option value="clase1">Clase 1</option>
-                    <option value="clase2">Clase 2</option>
-                    <option value="miembro2">Miembro 2</option>
-                    <option value="profesor">Profesor</option>
+                <select id="memberSelect" class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2">
+                    <option>Selecciona un integrante</option>
                 </select>
             </div>
         </div>
-
-
 
         <!-- Div Azul-->
         <div class="flex flex-col md:flex-row">
             <div class="bg-blue-900 w-full md:w-1/3 h-96 rounded ml-0 md:ml-1 mx-2 relative flex md:ml-32 mb-12 md:mb-0">
                 <div class="bg-white absolute bottom-2 right-2 h-12 w-20 rounded flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 384 512"
-                        class="mt-2 ml-3"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        class="mt-2 ml-3">
                         <style>
                             svg {
                                 fill: #ff0f0f
@@ -79,7 +65,7 @@
 
                 <div class="bg-white absolute bottom-2 right-20 h-12 w-20 rounded flex items-center mr-5">
                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"
-                        class="ml-1 mt-2"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                        class="ml-1 mt-2">
                         <path fill="#ff0000"
                             d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
                     </svg>
@@ -129,11 +115,7 @@
                     </div>
                 </div>
             </div>
-    </form>
-    
-
-  
-
+        </form>
 </body>
 
 </html>

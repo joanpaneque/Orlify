@@ -31,7 +31,7 @@ $app = new \Emeset\Emeset($container);
 // GET routes
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
-$app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
+$app->post("/groups/getMembers", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
 $app->get("/activated", [Portrait::class, "togglePortrait"]); // Conflicting route definition
@@ -46,6 +46,7 @@ $app->post("/register/register", [Register::class, "register"]);
 
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 $app->get("/groups", [Groups::class, "index"]);
+$app->get("/groups/getGroups", [Groups::class, "getGroups"]);
 $app->post("/groups/uploadImagesMember", [Groups::class, "uploadImagesMember"]);
 
 $app->get("/login", [Login::class, "index"]);

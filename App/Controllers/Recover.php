@@ -49,30 +49,36 @@ class Recover {
         $userId = $users->getFromEmail($email);
 
         if ($userId) {
-            // Generate recovery token
             $token = $recoveries->generate($userId);
 
-            // Construct recovery URL
             $recoverUrl = "{$container["config"]["host"]}/recover/newPassword?recoveryToken={$token}";
-
-            // Initialize PHPMailer
+            
             $oMail = new PHPMailer(true);
     
             try {
-                // Configure PHPMailer
                 $oMail->isSMTP();
-                // ... (other configurations)
-
-                // Set email content and send
+                $oMail->Host = $container["config"]["smtp"]["host"];
+                $oMail->Port = $container["config"]["smtp"]["port"];
+                $oMail->SMTPSecure = $container["config"]["smtp"]["secure"];
+                $oMail->SMTPAuth = $container["config"]["smtp"]["auth"];
+    
+                $oMail->Username = $container["config"]["smtp"]["username"];
+                $oMail->Password = $container["config"]["smtp"]["password"];
+    
+                $oMail->setFrom($container["config"]["smtp"]["username"], 'Recuperador de contrasenyes');
+                $oMail->addAddress($email, 'usuari');
+    
+                $oMail->isHTML(true);
+                $oMail->Subject = "Link per recuperar al teu compte";
+                $oMail->Body = "Recupera la teva contrasenya fent clic a aquest <a href='{$recoverUrl}'>enllaç</a>.";
+    
                 $oMail->send();
             } catch (Exception $e) {
                 // While we don't have a logger, we'll just ignore the exception.
                 // We don't want to show the user an error message.
-                print_r($e);
             }
         }
         
-        // Set response data
         $response->set("email", $email);
         $response->setTemplate("sendMail.php");
         return $response;

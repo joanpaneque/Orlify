@@ -32,9 +32,31 @@ class Groups {
 
         // $response->set("images", $urls);
 
+        // $userId = $request->get('SESSION', 'userId');  
+        $userId = 2;
+
+        $groups = $container->get("\App\Models\Groups");
+
+        $groupUsers = $groups->getGroupUser($userId);
+
+        $groupNames = [];
+
+        foreach ($groupUsers as $groupName) {
+            $names = $groups->getGroupName($groupName);
+            $name = isset($names[0]) ? $names[0] : null;
+            if ($name) {
+                $groupNames[] = $name;
+            }
+        }
+
+        $response->set("error", 0);
+        $response->set("message", "S'han pogut recuperar els usuaris del grup");
+        $response->set("users", $groupNames);
+
         $response->SetTemplate("groups.php");
 
-        return $response;        
+        return $response;
+              
     }
 
     /**
@@ -82,11 +104,11 @@ class Groups {
      */
     public function getMembers($request, $response, $container) {
 
-        $groupId = $request->get(INPUT_GET, 'groupId');
-
-        $users = $container->get("\App\Models\Users");
+        $groupId = $request->get(INPUT_POST, 'selectedValue');
+    
         $groups = $container->get("\App\Models\Groups");
-
+        $users = $container->get("\App\Models\Users");
+    
         $groupExists = $groups->exists($groupId);
         
         if (!$groupExists) {
@@ -94,20 +116,46 @@ class Groups {
             $response->set("message", "Grup no trobat");
             return $response;
         }
+    
+        $groupUsersId = $groups->getUsers($groupId);
+        $groupUsers = []; 
 
-        $groupUsers = $groups->getUsers($groupId);
+
+        foreach ($groupUsersId as $userId) {
+            $groupUsers[] = $users->get($userId);
+
+        }
         
         $response->set("error", 0);
         $response->set("message", "S'han pogut recuperar els usuaris del grup");
         $response->set("users", $groupUsers);
-
+    
         return $response;
-    } 
+    }
+    
+
+    // public function getGroups($request, $response, $container) {
+
+    //     $userId = 3;
+
+    //     $groups = $container->get("\App\Models\Groups");
+
+    //     $groupUsers = $groups->getGroupUser($userId);
+
+    //     $response->set("error", 0);
+    //     $response->set("message", "S'han pogut recuperar els usuaris del grup");
+    //     $response->set("users", $groupUsers);
+
+    //     $response->SetTemplate("groups.php");
+    //     return $response;
+    // } 
+
 
 
     public function uploadImagesMember($request, $response, $container) {
-        // $userId = $request->get('SESSION', 'userId');   
-        $userId = 3;   
+        // $userId = $request->get('SESSION', 'userId');
+        $userId = $request->get(INPUT_POST, 'user.id');
+        // $userId = 3;
         $images = $container->get("\App\Models\Images");
         $users = $container->get("\App\Models\Users");
     

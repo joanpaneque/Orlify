@@ -56,6 +56,7 @@
             return $query->fetch()["id"];
         }
 
+
         /**
          * Get all users.
          * @return array

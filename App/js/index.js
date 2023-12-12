@@ -5,6 +5,7 @@ import inputSelect from "./Allocators/inputSelect.js";
 import admin from "./Allocators/admin.js";
 import reports from "./Allocators/reports.js";
 import images from "./Allocators/images.js";
+import groups from "./Allocators/groups.js";
 
 // "reciever": allocator
 const emesis = new Emesis({
@@ -12,5 +13,6 @@ const emesis = new Emesis({
     "inputSelect": inputSelect,
     "admin": admin,
     "reports": reports,
-    "images": images
+    "images": images,
+    "groups": groups
 });

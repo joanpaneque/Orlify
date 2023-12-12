@@ -65,6 +65,24 @@ class Groups {
         return $query->fetchAll(\PDO::FETCH_COLUMN);
     }
 
+        public function getGroupUser($userId) {
+            $sql = "SELECT groupId FROM studentsusersgroups WHERE userId = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":userId" => $userId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN);
+        }
+
+
+        public function getGroupName($groupId) {
+            $sql = "SELECT Id , name FROM groups WHERE Id = :groupId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":groupId" => $groupId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_ASSOC);
+        }
 
         public function getTeachers($groupId) {
             $sql = "SELECT userId FROM teachersusersgroups WHERE groupId = :groupId";
