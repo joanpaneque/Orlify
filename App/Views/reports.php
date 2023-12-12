@@ -31,9 +31,9 @@
                 </tr>
             </thead>
             <tbody style="overflow: hidden; border-radius: 15px;">  
-                <?php foreach ($reports as $report): ?>
+            <?php foreach ($reports as $report): ?>
                     <tr class="text-center hover:bg-gray-100" data-report-id="<?= $report['id']; ?>" data-marked="<?= $report['marked']; ?>">
-                        <td class="py-2"><?= $report['name']; ?></td>
+                        <td class="py-2"><?= $report['name'];?></td>
                         <td class="py-2"><?= $report['description']; ?></td>
                         <td class="py-2">
                             <input type="checkbox" name="toggleReports" class="loginCheckbox hover:cursor-pointer toggleReportsCheckbox" data-report-id="<?= $report['id']; ?>" <?php echo $report['marked'] ? 'checked' : ''; ?>/>

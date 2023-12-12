@@ -5,18 +5,18 @@ namespace App\Controllers;
 class Groups {
     public function index($request, $response, $container) {
 
-        $users = $container->get("\App\Models\Users");
-        $images = $container->get("\App\Models\Images");
+        // $users = $container->get("\App\Models\Users");
+        // $images = $container->get("\App\Models\Images");
 
 
-        $imgs = $users->getImages(2);
-        $urls = [];
+        // $imgs = $users->getImages(3);
+        // $urls = [];
 
-        foreach($imgs as $image) {
-            $urls[] = $images->getUrl($image)[0];
-        }
+        // foreach($imgs as $image) {
+        //     $urls[] = $images->getUrl($image)[0];
+        // }
 
-        $response->set("images", $urls);
+        // $response->set("images", $urls);
 
         $response->SetTemplate("testingimg.php");
 
@@ -75,39 +75,46 @@ class Groups {
         return $response;
     } 
 
+
     public function uploadImagesMember($request, $response, $container) {
         // $userId = $request->get('SESSION', 'userId');   
-        $userId = 2;   
+        $userId = 3;   
         $images = $container->get("\App\Models\Images");
         $users = $container->get("\App\Models\Users");
-
+    
         $image1 = $request->get("FILES", "image1");
         $image2 = $request->get("FILES", "image2");
         $image3 = $request->get("FILES", "image3");
-
+    
         $imgs = [$image1, $image2, $image3];
-
-
+        $imageUrls = [];
+    
         foreach($imgs as $image) {
-
             $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
             $tokenizedFile = hash("sha256", $extension .  $userId . rand(0, 10000)) . $extension;
             $url = "userData/" . $tokenizedFile;
-
-
+    
             if (!move_uploaded_file($image["tmp_name"], $url)) {
                 $response->set("error", 1);
-                $response->set("message", "imatge no inserida");
+                $response->set("message", "Image not uploaded");
+                $response->set("result", "error");
                 return $response;
+            }else{
+                $imageId = $images->add($url);
+                $users->addImage($userId, $imageId);
             }
-
-            $imageId = $images->add($url);
-            $users->addImage($userId, $imageId);
+            $imageUrls[] = $url;
         }
-
-        $response->set("error", 0);
-        $response->set("message", "S'han pogut registrar les imatges correctament");
-        return $response;
+    
+        $responseBody = [
+            "error" => 0,
+            "message" => "Images registered successfully",
+            "result" => "ok",
+            "imageUrls" => $imageUrls,
+        ];
+    
+        return $response->withJson($responseBody);
     }
+
 }
 

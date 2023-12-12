@@ -36,4 +36,9 @@ class Portrait {
         return $response;
 
     }
+
+
+    public function deleteImagesMembers ($request, $response, $container) {
+        
+    }
 }

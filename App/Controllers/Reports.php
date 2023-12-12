@@ -12,7 +12,6 @@ class Reports {
         $response->set("reports", $reportsData);
         $response->SetTemplate("reports.php");
         
-
         return $response;        
         
     }
