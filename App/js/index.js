@@ -6,6 +6,7 @@ import admin from "./Allocators/admin.js";
 import reports from "./Allocators/reports.js";
 import images from "./Allocators/images.js";
 import groups from "./Allocators/groups.js";
+import dopdf from "./Allocators/dopdf.js";
 
 // "reciever": allocator
 const emesis = new Emesis({
@@ -14,5 +15,6 @@ const emesis = new Emesis({
     "admin": admin,
     "reports": reports,
     "images": images,
-    "groups": groups
+    "groups": groups,
+    "dopdf" : dopdf
 });

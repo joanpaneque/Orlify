@@ -124,7 +124,7 @@
         }
 
         public function createUser($name, $surnames, $username, $email, $password) {
-            $sql = "INSERT INTO users (roleId,name, surnames, username, email, password) VALUES (1,:name, :surnames, :username, :email, :password)";
+            $sql = "INSERT INTO users (roleId, name, surnames, username, email, password) VALUES (1,:name, :surnames, :username, :email, :password)";
             $query = $this->sql->prepare($sql);
             $query->execute([
                 ":name" => $name,
