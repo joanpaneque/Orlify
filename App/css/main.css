@@ -66,7 +66,8 @@ body {
 }
 
 .roundedRedButton,
-.roundedGrayButton {
+.roundedGrayButton,
+.roundedLightRedButton {
     color: #fff;
     height: 53px;
     max-width: 162px;
@@ -98,7 +99,11 @@ body {
 
 .roundedRedButton {
     background: var(--primary);
+}
 
+.roundedLightRedButton {
+    border: 2px solid var(--primary);
+    color: var(--primary);
 }
 
 .roundedGrayButton {
@@ -293,6 +298,11 @@ form {
     opacity: 0.3;
     color: var(--color);
     border: 2px solid var(--color);
+}
+
+.DataTableButton.disabled {
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .DataTableButton:hover {

@@ -615,6 +615,9 @@ video {
 .hidden {
   display: none;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .h-12 {
   height: 3rem;
 }
@@ -650,6 +653,9 @@ video {
 }
 .w-12 {
   width: 3rem;
+}
+.w-20 {
+  width: 5rem;
 }
 .w-3 {
   width: 0.75rem;
@@ -1016,7 +1022,8 @@ body {
 }
 
 .roundedRedButton,
-.roundedGrayButton {
+.roundedGrayButton,
+.roundedLightRedButton {
     color: #fff;
     height: 53px;
     max-width: 162px;
@@ -1048,7 +1055,11 @@ body {
 
 .roundedRedButton {
     background: var(--primary);
+}
 
+.roundedLightRedButton {
+    border: 2px solid var(--primary);
+    color: var(--primary);
 }
 
 .roundedGrayButton {
@@ -1247,6 +1258,11 @@ form {
     border: 2px solid var(--color);
 }
 
+.DataTableButton.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 .DataTableButton:hover {
     background: var(--color);
     color: #fff;
@@ -1345,9 +1361,24 @@ label.white {
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
 }
 
+.focus\:border-transparent:focus {
+  border-color: transparent;
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-gray-200:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-indigo-500:focus {

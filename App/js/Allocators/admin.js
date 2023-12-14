@@ -97,4 +97,38 @@ export default async function admin() {
         e.preventDefault();
         $("#addModal__submit").click();
     });
+
+    const csvButton = $("#csvModal__update");
+    const csvInput = $("#csvModal__file");
+
+    csvButton.addClass("disabled");
+
+    csvInput.on("input", e => {
+        if (csvInput.val() != "") {
+            csvButton.removeClass("disabled");
+        } else {
+            csvButton.addClass("disabled");
+        }
+    });
+
+    csvButton.on("click", e => {
+        e.preventDefault();
+        const csv = document.querySelector("#csvModal__file").files[0];
+        const formData = new FormData();
+        formData.append('csv', csv);
+        $.ajax({
+            url: "/admin/importUsersCSV",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: data => {
+                location.reload();
+            },
+            error: err => {
+                console.log(err);
+            }
+        });
+    });
 }

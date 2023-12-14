@@ -62,6 +62,19 @@ class Recoveries {
     }
 
     /**
+     * Deletes all recovery tokens associated with a user.
+     *
+     * @param int $userId User ID to delete recovery tokens.
+     */
+    public function deleteAll($userId) {
+        $sql = "DELETE FROM recoveries WHERE userId = :userId";
+        $query = $this->sql->prepare($sql);
+        $query->execute([
+            ":userId" => $userId
+        ]);
+    }
+
+    /**
      * Generates a new recovery token for a user.
      *
      * @param int $userId User ID to generate a recovery token.

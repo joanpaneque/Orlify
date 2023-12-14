@@ -30,23 +30,22 @@ $app = new \Emeset\Emeset($container);
  * Define routes and their corresponding controller methods.
  */
 
- // ho
-
 // GET routes
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
 $app->get("/ajax/groups/members", [Groups::class, "getMembers"]);
 $app->get("/ajax/users/setMainImage", [Users::class, "setMainImage"]);
 $app->get("/ajax/users/deleteImage", [Users::class, "deleteImage"]);
-$app->get("/delete", [DeleteUser::Class, "delete"]);
+$app->get("/delete", [DeleteUser::class, "delete"]);
 $app->get("/ajax/portrait/toggle", [Portrait::class, "togglePortrait"]);
 $app->get("/admin/updateUser", [Admin::class, "updateUser"]);
 $app->post("/admin/createuser", [Admin::class, "createUser"]);
+$app->post("/admin/importUsersCSV", [Admin::class, "importUsersCSV"]);
+$app->post("/admin/addBots", [Admin::class, "addBots"]);
 
 $app->get("/recover", [Recover::class, "index"]);
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 $app->get("/groups", [Groups::class, "index"]);
-
 
 $app->get("/login", [Login::class, "index"]);
 $app->post("/login", [Login::class, "login"]);
@@ -55,19 +54,22 @@ $app->get("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
 $app->get("/admin", [Admin::class, "index"]);
 $app->get("/reports", [Reports::class, "index"]);
-$app->get("/index", function ($request, $response) { // Anonymous function route
+
+$app->get("/index", function ($request, $response) {
     $response->setBody("Logged in!");
     return $response;
 });
+
 $app->get("/register", [Register::class, "index"]);
-$app->get(Router::DEFAULT_ROUTE, function ($request, $response) { // Default route
+
+$app->get(Router::DEFAULT_ROUTE, function ($request, $response) {
     $response->setBody("Hola!");
     return $response;
 });
 
 // POST routes
 $app->post("/ajax/Reports/marked", [Reports::class, "toggleReports"]);
-$app->post("/admin/updateUser", [Admin::class, "updateUser"]); // Conflicting route definition
+$app->post("/admin/updateUser", [Admin::class, "updateUser"]);
 $app->post("/admin/deleteUser", [Admin::class, "deleteUser"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->post("/reports/toggleReports", [Reports::class, "toggleReports"]);
