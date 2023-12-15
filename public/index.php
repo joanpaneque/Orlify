@@ -72,6 +72,10 @@ $app->post("/admin/updateUser", [Admin::class, "updateUser"]); // Conflicting ro
 $app->post("/admin/deleteUser", [Admin::class, "deleteUser"]);
 $app->post("/recover/sendMail", [Recover::class, "sendMail"]);
 $app->post("/reports/toggleReports", [Reports::class, "toggleReports"]);
+$app->post("/portraits/togglePortrait", [Portrait::class, "togglePortrait"]);
+$app->get("/portraits/isActivated", [Portrait::class, "isActivated"]);
+
+$app->post("/groups/toggleOrles", [Groups::class, "toggleOrles"]);
 
 /**
  * Executes the defined routes.
