@@ -20,29 +20,29 @@
       <form action="/register/register" method="POST" class="mt-6 flex-grow hhh">
         <div class="inputBlock">
           <label for="name">Nom</label>
-          <input type="text" name="name" class="inputField" required>
+          <input type="text" name="name" class="inputField" required aria-label="nom">
         </div>
         <div class="inputBlock">
           <label for="surname">surnames</label>
-          <input type="text" name="surnames" class="inputField" required>
+          <input type="text" name="surnames" class="inputField" required aria-label="surname">
         </div>
         <div class="inputBlock">
           <label for="username">username</label>
-          <input type="text" name="username" class="inputField" required>
+          <input type="text" name="username" class="inputField" required aria-label="username">
         </div>
         <div class="inputBlock">
           <label for="mail">Correu electronic</label>
-          <input type="mail" name="email" class="inputField" required>
+          <input type="mail" name="email" class="inputField" required aria-label="mail">
         </div>
         <div class="inputBlock">
           <label for="password">Contrasenya</label>
-          <input type="password" name="password" class="inputField" required>
+          <input type="password" name="password" class="inputField" required aria-label="password">
         </div>
         <div class="inputBlock">
           <label for="password">Confirmar Contrasenya</label>
-          <input type="password" name="password2" class="inputField" required>
+          <input type="password" name="password2" class="inputField" required aria-label="password">
         </div>
-        <a href="/login"><button type="submit" class="roundedRedButton">Registrar-se</button></a>
+        <a href="/login"><button type="submit" class="roundedRedButton" >Registrar-se</button></a>
       </form>
 
       <p class="font-bold">Ja tens compte? <a href="/login" class="text-red-600">Inicia Sessió</a></p>

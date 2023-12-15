@@ -33,7 +33,7 @@ class Groups {
         // $response->set("images", $urls);
 
         // $userId = $request->get('SESSION', 'userId');  
-        $userId = 3;
+        $userId = 1;
 
         $groups = $container->get("\App\Models\Groups");
 

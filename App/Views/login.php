@@ -22,7 +22,7 @@
                 </div>
                 <div class="inputBlock">
                     <label for="password">Contrasenya</label>
-                    <input type="password" name="password" class="inputField" required>
+                    <input type="password" name="password" class="inputField" required aria-label="password">
                 </div>
                 <div class="grid grid-cols-2">
                     <div class="text-left flex items-center">

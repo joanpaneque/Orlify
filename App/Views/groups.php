@@ -31,6 +31,7 @@
     <form class="mt-8 space-y-6" action="/groups/getMembers" method="POST" enctype="multipart/form-data">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="flex items-center justify-center">
+            <label for="classSelect"></label>
                 <select id="classSelect" class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2">
                     <option value="">Selecciona una clase</option>
                     <?php foreach ($users as $group) : ?>
@@ -40,6 +41,7 @@
             </div>
 
             <div class="flex items-center justify-center md:mt-0">
+            <label for="memberSelect"></label>
                 <select id="memberSelect" class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2">
                     <option>Selecciona un integrante</option>
                 </select>
@@ -103,6 +105,7 @@
                             <div class="bg-slate-200 flex items-center h-full justify-center">
                                 <div id="dropArea">
                                     <p>Arrastra y suelta imágenes aquí o haz clic para seleccionarlas.</p>
+                                    <label for="images"></label>
                                     <input type="file" id="images" multiple accept="image/*">
                                 </div>
                             </div>
