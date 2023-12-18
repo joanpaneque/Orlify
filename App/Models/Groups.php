@@ -76,7 +76,7 @@ class Groups {
 
 
         public function getGroupName($groupId) {
-            $sql = "SELECT Id , name FROM groups WHERE Id = :groupId";
+            $sql = "SELECT Id name FROM groups WHERE Id = :groupId";
             $query = $this->sql->prepare($sql);
             $query->execute([
                 ":groupId" => $groupId

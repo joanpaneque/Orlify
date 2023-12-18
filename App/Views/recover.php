@@ -18,7 +18,7 @@
             <form action="/recover/sendMail" method="POST" class="mt-6">
                 <div class="inputBlock">
                     <label for="email">Correu electrònic</label>
-                    <input type="email" name="email" class="inputField" required>
+                    <input type="email" name="email" class="inputField" required aria-label="recover">
                 </div>
                 <button type="submit" class="roundedRedButton">Recuperar accés</button>
             </form>
