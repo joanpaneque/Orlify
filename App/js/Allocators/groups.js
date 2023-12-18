@@ -175,6 +175,7 @@ export default function groups() {
             container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
             container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
             container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            
             return;
         }
     
