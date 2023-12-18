@@ -164,19 +164,26 @@ export default function groups() {
     });
     
     function displayImages(images) {
-        if (!images) {
-            console.log("No hay imágenes en la respuesta.");
-            return;
-        }
-    
         const container = $(".flex-row");
         container.empty();
+    
+        // Agrega una imagen predeterminada si no hay imágenes en la respuesta
+        if (!images || images.length === 0) {
+            container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            container.append(`<img src="https://via.placeholder.com/150" alt="Imagen Predeterminada" class="object-cover w-24 h-24">`);
+            return;
+        }
     
         images.forEach(function (image) {
             const imgElement = `<img src="${image}" alt="Square 2" class="object-cover w-24 h-24">`;
             container.append(imgElement);
         });
     }
+    
     
     
 
