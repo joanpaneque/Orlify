@@ -15,16 +15,16 @@
 
     <body class="bg-gray-100 flex flex-col min-h-screen">
 
-        <div class="bg-red-500 p-4 flex items-center">
-            <a class="text-white mb-2 mr-4" href="/login">
+        <div class="bg-red-500 p-4 flex items-center ">
+            <a class="font-bold text-white mb-2 " href="/frontPage">
                 <p>Orlify</p>
             </a>
-            <a class="text-white ml-auto mb-2" href="/login">
+            <a class="text-white font-bold ml-auto mb-2" href="/login">
                 <p>Iniciar Sesión</p>
             </a>
         </div>
         <div>
-            <h1 class="text-dark-500 mt-3 mb-5 text-center text-4xl md:text-6xl font-extrabold ">
+            <h1 class="text-dark-500 mt-3 mb-5 text-center text-4xl md:text-6xl font-bold ">
                 Benvinguts a l'institut Cendrassos!
             </h1>
         </div>
@@ -34,28 +34,28 @@
 
 
             <!-- Slider -->
-            <div id="default-carousel" class="relative w-full h-full" data-carousel="slide">
+            <div id="default-carousel" class="relative w-full h-full overflow-hidden" data-carousel="slide">
                 <!-- Carousel wrapper -->
-                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                <div class="flex h-72 md:h-128 lg:h-144 overflow-hidden rounded-lg md:h-96">
                     <!-- Item 1 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/icons/cen1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="/icons/cen1.jpg" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/icons/cen2.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="/icons/cen2.jpg" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <!-- Item 3 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/icons/cen3.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="/icons/cen3.jpg" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <!-- Item 4 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/icons/cen4.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="/icons/cen4.jpg" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                     <!-- Item 5 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/icons/cen5.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="/icons/cen5.jpg" class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </div>
                 </div>
                 <!-- Slider indicators -->
@@ -84,13 +84,14 @@
                     </span>
                 </button>
             </div>
+            
             <div class="text-center">
-                <h1 class="mt-3 mb-5 text-center text-4xl md:text-6xl font-extrabold text-dark-500">
+                <h1 class="mt-10 mb-5 text-center text-4xl md:text-6xl font-bold text-dark-500 md:mt-10">
                     Orles disponibles per els grups de l'institut
                 </h1>
-                <a href="/login">
-                    <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ">
-                        Visualitzar Orles
+                <a href="/groups">
+                    <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl">
+                         Orles
                     </button>
                 </a>
 
@@ -103,24 +104,30 @@
 
 
 
-        <!-- fotter -->
-        <div class="bottom-0 left-0 w-full bg-red-500 p-4 flex items-center fixed">
-    <a class="text-white mb-2 mr-4 flex items-center" href="/login">
-        <p>Contacte: Orlify.es</p>
-        
-    </a>
-    <a class="text-white ml-auto mb-2 flex items-center" href="/login">
-        <p>Redes</p>
-        <i class="fab fa-instagram ml-2 mr-1"></i>
-        <i class="fa-brands fa-twitter mr-1"></i>
-        <i class="fa-brands fa-telegram mr-1"></i>
-    </a>
-</div>
+    <!-- fotter -->
+    <div class="fixed bottom-0 left-0 w-full bg-red-500 p-1 flex items-center">
+        <a class="text-white  mr-4 flex flex-col items-center ">
+            <p class="text-lg font-extrabold">Contacte</p>
+            <p class="text-lg text-">Orlify@cendrassos.es</p>
+        </a>
+        <a class="text-white ml-auto flex flex-col items-center">
+            <p class="text-lg font-extrabold ">Xarxes</p>
+            <div class="flex items-center ">
+                <i class="fab fa-instagram mr-2 text-2xl mt-1"></i>
+                <i class="fa-brands fa-twitter mr-2 text-2xl mt-1"></i>
+                <i class="fa-brands fa-telegram mr-2 text-2xl mt-1"></i>
+            </div>
+        </a>
+    </div>
 
 
 
 
 
+
+
+
+    
 
         </div>
 

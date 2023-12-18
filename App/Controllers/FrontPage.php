@@ -7,7 +7,7 @@ namespace App\Controllers;
  *
  * This class manages operations related to groups.
  */
-class Header {
+class FrontPage {
     /**
      * Display the index page for groups.
      *
@@ -18,7 +18,7 @@ class Header {
      */
     public function index($request, $response, $container){
 
-    $response->SetTemplate("header.php");
+    $response->SetTemplate("frontPage.php");
     return $response;   
     }
 }
