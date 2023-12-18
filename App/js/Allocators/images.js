@@ -1,11 +1,16 @@
 import $ from 'jquery';
 
+// import { userId } from './groups.js';
+
+// console.log(userId);
+
 export default function images() {
 
-    
+
     $(document).ready(function () {
         var imagesInput = document.getElementById("images");
         var submitButton = document.getElementById("submitButton");
+        var userId = document.getElementsByName("userId");
     
         submitButton.addEventListener("click", function (event) {
             event.preventDefault();
@@ -18,7 +23,7 @@ export default function images() {
             formData.append('image1', image1);
             formData.append('image2', image2);
             formData.append('image3', image3);
-    
+            formData.append('userId', userId);
 
             $.ajax({
                 url: "/groups/uploadImagesMember",

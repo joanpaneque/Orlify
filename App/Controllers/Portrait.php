@@ -59,6 +59,26 @@ class Portrait {
         return $response;
     }
 
+    public function isActivated($request, $response, $container) {
+
+
+        $portraits = $container->get("\App\Models\Portraits");
+        $groupId = $request->get(INPUT_GET, "groupId");
+
+        if (!$portraits->isCreated($groupId)) {
+            $response->set("error", 1);
+            $response->set("message", "Aquest grup no te orla");
+            return $response;
+        }
+
+        $response->set("error", 0);
+        $response->set("message", "ok");
+        $response->set("isActivated", $portraits->isActivated($groupId));
+
+        return $response;
+    
+    }
+
 
     public function deleteImagesMembers ($request, $response, $container) {
         

@@ -16,9 +16,7 @@
     </div>
     <button id="submitButton" style="margin-top: 10px;">Enviar</button> -->
 
-    <input type="file" id="images" multiple>
-    <button id="submitButton">Submit</button>
-    <div id="imageContainer"></div>
+
 
     <?php foreach($images as $image) { ?>
         <img src="<?=$image?>">

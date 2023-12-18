@@ -155,7 +155,7 @@
          * @return array
          */
         public function getImages($userId) {
-            $sql = "SELECT imageId FROM portraitsUsersImages WHERE userId = :userId";
+            $sql = "SELECT imageId FROM portraitsUsersImages WHERE userId = :userId limit 6";
             $query = $this->sql->prepare($sql);
             $query->execute([
                 ":userId" => $userId

@@ -18,27 +18,13 @@ class Groups {
      */
     public function index($request, $response, $container){
     
-
-        // $users = $container->get("\App\Models\Users");
-        // $images = $container->get("\App\Models\Images");
-
-
-        // $imgs = $users->getImages(3);
-        // $urls = [];
-
-        // foreach($imgs as $image) {
-        //     $urls[] = $images->getUrl($image)[0];
-        // }
-
-        // $response->set("images", $urls);
-
-        // $userId = $request->get('SESSION', 'userId');  
-        $userId = 1;
+        // $userId = $request->get('SESSION', 'userId');
+        $userId = 4;
 
         $groups = $container->get("\App\Models\Groups");
 
+        // groups
         $groupUsers = $groups->getGroupUser($userId);
-
         $groupNames = [];
 
         foreach ($groupUsers as $groupName) {
@@ -48,15 +34,14 @@ class Groups {
                 $groupNames[] = $name;
             }
         }
-
+        
         $response->set("error", 0);
         $response->set("message", "S'han pogut recuperar els usuaris del grup");
         $response->set("users", $groupNames);
-
+        
         $response->SetTemplate("groups.php");
 
-        return $response;
-              
+        return $response;              
     }
 
     /**
@@ -153,19 +138,22 @@ class Groups {
 
 
     public function uploadImagesMember($request, $response, $container) {
-        // $userId = $request->get('SESSION', 'userId');
-        $userId = $request->get(INPUT_POST, 'user.id');
-        // $userId = 3;
+
+        $userId = $request->get(INPUT_POST, 'userId');
+
+
         $images = $container->get("\App\Models\Images");
         $users = $container->get("\App\Models\Users");
     
         $image1 = $request->get("FILES", "image1");
         $image2 = $request->get("FILES", "image2");
         $image3 = $request->get("FILES", "image3");
+
+        $response->set("userId", $userId);
     
         $imgs = [$image1, $image2, $image3];
         $imageUrls = [];
-    
+
         foreach($imgs as $image) {
             if (!$image) {
                 continue;
@@ -186,18 +174,56 @@ class Groups {
             }
             $imageUrls[] = $url;
         }
+
+        $response->set("error", 0);
+        $response->set("message", "Imatges pujades correctament");
+        $response->set("imageUrls", $imageUrls);
     
-        $responseBody = [
-            "error" => 0,
-            "message" => "Images registered successfully",
-            "result" => "ok",
-            "imageUrls" => $imageUrls,
-        ];
-    
-        return $response->withJson($responseBody);
+        return $response;
     }
 
+    public function toggleOrles($request, $response, $container){
+        // Get report ID from the POST request
+        $orlaId = $request->get(INPUT_POST, 'orlaId');
+        
+        // Access the Reports model
+        $Portraits = $container->get("\App\Models\Portraits");
+        
+        // Check if the report exists
+        if (!$Portraits->exists($orlaId)) {
+            $response->set("error", 1);
+            $response->set("message", "Aquesta Orla no existeix");
+            return $response;
+        }
+
+        // Toggle the report status and check its activation
+        $Portraits->togglePortrait($orlaId);
+        $isActivated = $Portraits->isActivated($orlaId);
+
+        // Set response messages based on the report activation status
+        $response->set("error", 0);
+        $response->set("message", "Orla " . ($isActivated ? 'activat' : 'desactivat') . " correctament");
+        return $response;
+    }
+
+    public function getImages($request, $response, $container) {
+        
+        $userId = $request->get(INPUT_POST, 'userId');
+
+        $users = $container->get("\App\Models\Users");
+        $images = $container->get("\App\Models\Images");
+
+        $imgs = $users->getImages($userId);
+        $urls = [];
+
+        foreach($imgs as $image) {
+            $urls[] = $images->getUrl($image)[0];
+        }
+
+        $response->set("images", $urls);
     
+        return $response;   
+    }
 
-}
 
+}   

@@ -74,4 +74,14 @@ class Portraits {
             ":groupId" => $groupId
         ]);
     }
+
+    public function exists($orlaId) {
+        $sql = "SELECT * FROM portraits WHERE id = :orlaId";
+        $query = $this->sql->prepare($sql);
+        $query->execute([
+            ":orlaId" => $orlaId
+        ]);
+
+        return $query->rowCount() > 0;
+    }
 }
