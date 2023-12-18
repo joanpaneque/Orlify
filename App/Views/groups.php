@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta allocation="groups">
-    <!-- <meta allocation="images"> -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -16,7 +15,7 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100" data-user-id ="<?php echo $user["id"]?>">
 
     <div class="bg-red-500 p-4 flex items-center">
         <a class="text-white mb-2 mr-4" href="/login">
@@ -42,7 +41,7 @@
                         </select>
                     </div>
                     <div class="col-span-3 md:col-span-1">
-                        <div class="flex items-center justify-center md:mt-0">
+                        <div class="flex items-center justify-center md:mt-0" id="container-select" >
                             <label for="members" class="sr-only">Membres</label>
                                 <select id="memberSelect" class="sm:mx-2 select bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-7/12 sm:w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mx-2 js-select2">
                                     <option value="">Selecciona un alumno</option>
@@ -86,17 +85,11 @@
                 <div class="bg-slate-200 w-auto h-32 rounded">
                     <div class="col-span-6 md:col-span-4">
                         <div class="grid grid-cols-5 gap-4 mt-5">
-                            <div class="w-full overflow-hidden rounded-lg ml-5 ">
-                                <img src="https://via.placeholder.com/150" alt="Square 1"
-                                    class="rounded-full w-28 h-24">
-                            </div>
                             <div class="flex flex-row items-center space-x-4 ml-10 md:ml-6">
-                                <?php foreach($images as $image) { ?>
-                                    <img src="<?=$image?>" alt="Square 4" class="object-cover w-24 h-24">
-                                <?php } ?>
-                            </div>
-
-                            
+                                <?php foreach ($urls as $image) : ?>
+                                    <img src="/<?= $image ?>" alt="Square 2" class="object-cover w-24 h-24">
+                                <?php endforeach; ?>
+                            </div>                                             
                         </div>
                     </div>
                 </div>
@@ -114,29 +107,5 @@
                     </div>
                 </div>
             </div>
-          
-    <script>
-        $(document).ready(function() {
-            $('.js-select2').select2();
-            const fileInput = document.getElementById('file');
-            const fileContainer = document.querySelector('.relative.w-full.h-64');
-            fileContainer.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                fileContainer.classList.add('border-indigo-500');
-            });
-            fileContainer.addEventListener('dragleave', () => {
-                fileContainer.classList.remove('border-indigo-500');
-            });
-            fileContainer.addEventListener('drop', (e) => {
-                e.preventDefault();
-                fileContainer.classList.remove('border-indigo-500');
-                const droppedFile = e.dataTransfer.files[0];
-                if (droppedFile) {
-                    fileInput.files = new DataTransfer().files;
-                    fileInput.files.add(droppedFile);
-                }
-            });
-        });
-    </script>
 </body>
 </html> 

@@ -15,6 +15,7 @@ use \App\Controllers\Register;
 use \App\Controllers\Portrait;
 use \App\Controllers\DeleteUser;
 use \App\Controllers\Reports;
+use \App\Controllers\carnet;
 
 // Set error reporting and include necessary files
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -46,6 +47,7 @@ $app->post("/register/register", [Register::class, "register"]);
 
 $app->get("/recover/newPassword", [Recover::class, "newPassword"]);
 $app->get("/groups", [Groups::class, "index"]);
+$app->post("/groups/images", [Groups::class, "getImages"]);
 $app->get("/groups/getGroups", [Groups::class, "getGroups"]);
 $app->post("/groups/uploadImagesMember", [Groups::class, "uploadImagesMember"]);
 
@@ -56,6 +58,7 @@ $app->get("/logout", [Logout::class, "logout"]);
 $app->get("/testing", [Testing::class, "index"]);
 $app->get("/admin", [Admin::class, "index"]);
 $app->get("/reports", [Reports::class, "index"]);
+$app->get("/carnet", [carnet::class, "index"]);
 $app->get("/index", function ($request, $response) { // Anonymous function route
     $response->setBody("Logged in!");
     return $response;
