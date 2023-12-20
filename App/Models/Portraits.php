@@ -61,6 +61,15 @@ class Portraits {
         ]);
         return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
     }
+
+    public function isPublic($groupId) {
+        $sql = "SELECT public FROM portraits WHERE groupId = :groupId";
+        $query = $this->sql->prepare($sql);
+        $query->execute([
+            ":groupId" => $groupId
+        ]);
+        return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
+    }
     
     /**
      * Toggles the activation status of a portrait for a specific group.
@@ -69,6 +78,14 @@ class Portraits {
      */
     public function togglePortrait($groupId){
         $sql = "UPDATE portraits SET activated = !activated WHERE groupId = :groupId";
+        $query = $this->sql->prepare($sql);
+        $query->execute([
+            ":groupId" => $groupId
+        ]);
+    }
+
+    public function publicPortrait($groupId){
+        $sql = "UPDATE portraits SET public = !public WHERE groupId = :groupId";
         $query = $this->sql->prepare($sql);
         $query->execute([
             ":groupId" => $groupId

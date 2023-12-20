@@ -149,6 +149,15 @@
             return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
         }
 
+        public function getAllMainImage($userId) {
+            $sql = "SELECT mainPortraitImageId FROM users WHERE id = :userId";
+            $query = $this->sql->prepare($sql);
+            $query->execute([
+                ":userId" => $userId
+            ]);
+            return $query->fetchAll(\PDO::FETCH_COLUMN)[0];
+        }
+
         /**
          * Get images associated with a user.
          * @param int $userId

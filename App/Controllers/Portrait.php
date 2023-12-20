@@ -59,8 +59,34 @@ class Portrait {
         return $response;
     }
 
-    public function isActivated($request, $response, $container) {
+    public function publicPortrait($request, $response, $container) {
+        $groupId = $request->get(INPUT_POST, 'groupId');
+        
+        $portraits = $container->get("\App\Models\Portraits");
+        $groups = $container->get("\App\Models\Groups");
 
+        if (!$groups->exists($groupId)) {
+            $response->set("error", 1);
+            $response->set("message", "Aquest grup no existeix");
+            return $response;
+        }
+
+        if (!$portraits->isCreated($groupId)) {
+            $response->set("error", 1);
+            $response->set("message", "Aquest grup no te orla");
+            return $response;
+        }
+
+        // Toggle the portrait activation
+        $portraits->publicPortrait($groupId);
+        $isPublic = $portraits->isPublic($groupId);
+
+        $response->set("error", 0);
+        $response->set("message", "Orla " . ($isPublic ? 'Publicada' : 'desactivada') . " correctament");
+        return $response;
+    }
+
+    public function isActivated($request, $response, $container) {
 
         $portraits = $container->get("\App\Models\Portraits");
         $groupId = $request->get(INPUT_GET, "groupId");
@@ -74,6 +100,26 @@ class Portrait {
         $response->set("error", 0);
         $response->set("message", "ok");
         $response->set("isActivated", $portraits->isActivated($groupId));
+
+        return $response;
+    
+    }
+
+    public function isPublic($request, $response, $container) {
+
+        $portraits = $container->get("\App\Models\Portraits");
+        $groupId = $request->get(INPUT_GET, "groupId");
+
+        if (!$portraits->isCreated($groupId)) {
+            $response->set("error", 1);
+            $response->set("message", "Aquest grup no te orla");
+            return $response;
+        }
+
+        $response->set("error", 0);
+        $response->set("message", "ok");
+        $response->set("isPublic", $portraits->isPublic($groupId));
+
 
         return $response;
     

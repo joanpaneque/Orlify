@@ -66,7 +66,7 @@ class Groups {
     }
 
         public function getGroupUser($userId) {
-            $sql = "SELECT groupId FROM studentsusersgroups WHERE userId = :userId";
+            $sql = "SELECT groupId FROM teachersusersgroups WHERE userId = :userId";
             $query = $this->sql->prepare($sql);
             $query->execute([
                 ":userId" => $userId

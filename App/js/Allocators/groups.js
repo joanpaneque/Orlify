@@ -26,6 +26,28 @@ export default function groups() {
         });
     });
 
+    $("#publicPortrait").change(() => {
+        if (!groupId) {
+            $("#publicPortrait").prop("checked", false);
+            console.log("No has seleccionat cap grup");
+            return;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/portraits/publicPortrait',
+            data: { groupId: groupId },
+            success: (response) => {
+                console.log(response);
+            },
+            error: (error) => {
+                console.error(error);
+                $("#publicPortrait").prop('checked', !marked);
+            }
+        });
+    });
+
+
     $("#classSelect").change(function () {
         groupId = $(this).val();
 
@@ -36,6 +58,8 @@ export default function groups() {
             success: (response) => {
                 updateUsers(response.users);
                 updatePortrait(groupId);
+                updateorla(response.users);
+                updatePublicPortrait(groupId);
             },
             error: (error) => {
                 console.error(error);
@@ -70,10 +94,6 @@ export default function groups() {
     
     
     $("#memberSelect").on("change.select2", function (e) {
-        // selectedUserId = $(this).find(":selected").data("userid");
-        // console.log("Selected User ID:", $(e.target).val(), $("#memberSelect option:selected").data());
-        // $("#memberSelect:selected").data()
-
         selectedUserId = $(e.target).val();
     });
 
@@ -108,36 +128,6 @@ export default function groups() {
     
         return false;
     });
-
-
-    // $("#memberSelect").on("change.select2", function (e) {
-    //     const userId = selectedUserId;
-    
-    //     const formData = new FormData();
-    //     formData.append('userId', userId);
-
-    //     $.ajax({
-    //         url: "/groups/images",
-    //         type: 'POST',
-    //         data: formData,
-    //         processData: false,
-    //         contentType: false,
-    //         dataType: "json",
-    //         success: function (response) {
-    //             if (response.error) {
-    //                 displayImages(response);
-    //                 // updateImages(response.urls)
-    //             } else {
-    //                 console.log("Error: " + response.message);
-    //             }
-    //         },
-    //         error: function (error) {
-    //             console.log("Errores: ", error);
-    //         }
-    //     });
-    
-    //     return false;
-    // });
 
     $("#memberSelect").on("change.select2", function (e) {
         const userId = $("#memberSelect").val();
@@ -184,9 +174,6 @@ export default function groups() {
         });
     }
     
-    
-    
-
     function updateUsers(users) {
         console.log(users);
         $("#memberSelect").empty();
@@ -198,6 +185,7 @@ export default function groups() {
             `);
         });
     }
+    
 
     function updatePortrait(groupId) {
         $.ajax({
@@ -215,6 +203,40 @@ export default function groups() {
             error: (err) => {
                 console.log(err);
             }
-        });
+        }); 
+    }
+
+
+    function updatePublicPortrait(groupId) {
+        $.ajax({
+            type: "GET",
+            url: "/portraits/isPublic",
+            data: { groupId: groupId },
+            success: (data) => {
+                if (!data.error) {
+                    $("#publicPortrait").prop("checked", data.isPublic);
+                    return;
+                }
+                $("#publicPortrait").prop("checked", false);
+                console.log(data);
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        }); 
+    }
+
+
+    function updateorla(users) {
+
+        console.log(users);
+        $(".orla").empty();
+
+        users.forEach(user => {
+            $(".orla").append(`
+                <div><img src="userData/902bbbe93b621fde719ed865264bde9c7657c8a5bee18957fb7793c712cbc973jpg" alt="Imagen Predeterminada" class="object-cover w-12 h-12 "> ${user.name}</div>    
+            `);
+            console.log(`${user.mainPortraitImageId}`);
+        });        
     }
 }

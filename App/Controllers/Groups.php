@@ -19,9 +19,9 @@ class Groups {
     public function index($request, $response, $container){
     
         // $userId = $request->get('SESSION', 'userId');
-        $userId = 4;
+        $userId = 1;
 
-        $groups = $container->get("\App\Models\Groups");
+        $groups = $container->get("\App\Models\Groups");     
 
         // groups
         $groupUsers = $groups->getGroupUser($userId);
@@ -38,7 +38,7 @@ class Groups {
         $response->set("error", 0);
         $response->set("message", "S'han pogut recuperar els usuaris del grup");
         $response->set("users", $groupNames);
-        
+
         $response->SetTemplate("groups.php");
 
         return $response;              
@@ -108,9 +108,8 @@ class Groups {
 
         foreach ($groupUsersId as $userId) {
             $groupUsers[] = $users->get($userId);
-
         }
-        
+
         $response->set("error", 0);
         $response->set("message", "S'han pogut recuperar els usuaris del grup");
         $response->set("users", $groupUsers);
@@ -219,6 +218,7 @@ class Groups {
         foreach($imgs as $image) {
             $urls[] = $images->getUrl($image)[0];
         }
+
 
         $response->set("images", $urls);
     
