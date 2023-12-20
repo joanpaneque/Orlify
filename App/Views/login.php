@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/main.css">
     <meta allocation="inputBlock">
     <script src="/js/bundle.js" defer></script>
-    <title>Recuperar contrasenya</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="h-screen flex items-center justify-center p-6">

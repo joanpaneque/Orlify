@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/main.css">
     <script src="/js/bundle.js"></script>
     <meta allocation="inputBlock">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body class="bg-gray-100">
   <div class=" flex flex-row items-center justify-center text-center relative">
