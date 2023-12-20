@@ -28,6 +28,9 @@
             object-fit: cover; 
             border-radius: 100%;
         }
+
+
+        
     </style>    
 </head>
 
