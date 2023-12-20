@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Página con Tailwind CSS</title>
+    <title>Carnet</title>
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen">
 
@@ -38,7 +38,7 @@
 
     <!-- Footer -->
     <footer class="bg-red-500 p-4 text-white text-center mt-auto">
-        <p>&copy; 2023 Mi Página. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Todos los derechos reservados.</p>
     </footer>
 
 </body>

@@ -17,6 +17,7 @@ use \App\Controllers\DeleteUser;
 use \App\Controllers\Reports;
 use \App\Controllers\FrontPage;
 use \App\Controllers\carnet;
+use \App\Controllers\Webcam;
 
 // Set error reporting and include necessary files
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -32,6 +33,7 @@ $app = new \Emeset\Emeset($container);
 
 // GET routes
 $app->get("/frontPage", [FrontPage::class, "index"]);
+$app->get("/webcam", [Webcam::class, "index"]);
 $app->get("/ajax/portraits/create", [Groups::class, "createPortrait"]);
 $app->get("/ajax/portraits/toggle", [Portrait::class, "togglePortrait"]);
 $app->post("/groups/getMembers", [Groups::class, "getMembers"]);

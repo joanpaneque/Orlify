@@ -15,7 +15,7 @@
 
     <body class="bg-gray-100 flex flex-col min-h-screen">
 
-        <div class="bg-red-500 p-4 flex items-center ">
+    <div class="bg-red-500 p-4 flex items-center ">
             <a class="font-bold text-white mb-2 " href="/frontPage">
                 <p>Orlify</p>
             </a>
@@ -24,7 +24,7 @@
             </a>
         </div>
         <div>
-            <h1 class="text-dark-500 mt-3 mb-5 text-center text-4xl md:text-6xl font-bold ">
+            <h1 class="text-dark-500 mt-1 mb-5 text-center text-4xl md:text-6xl font-bold ">
                 Benvinguts a l'institut Cendrassos!
             </h1>
         </div>
@@ -86,10 +86,10 @@
             </div>
             
             <div class="text-center">
-                <h1 class="mt-10 mb-5 text-center text-4xl md:text-6xl font-bold text-dark-500 md:mt-10">
+                <h1 class=" mb-5 text-center text-4xl md:text-6xl font-bold text-dark-500 md:mt-10">
                     Orles disponibles per els grups de l'institut
                 </h1>
-                <a href="/groups">
+                <a href="/register">
                     <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl">
                          Orles
                     </button>
